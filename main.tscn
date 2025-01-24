@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://kpwigx1ui272"]
+
+[ext_resource type="PackedScene" uid="uid://cads2xvqvelx0" path="res://camera.tscn" id="1_7paam"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1sinj"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_ppcok"]
+sky_material = SubResource("ProceduralSkyMaterial_1sinj")
+
+[sub_resource type="Environment" id="Environment_ij4em"]
+background_mode = 2
+sky = SubResource("Sky_ppcok")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_nkr18"]
+size = Vector3(10, 10, 0.5)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ij4em")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(0.268896, 0.9182, -0.290869, -0.700765, 0.393683, 0.59493, 0.660775, 0.0438564, 0.749302, -7.36168, 0, 0)
+shadow_enabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_nkr18")
+
+[node name="Camera" parent="." instance=ExtResource("1_7paam")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.32346)
