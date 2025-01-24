@@ -1,0 +1,595 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1hjvkwwftrnd"]
+
+[ext_resource type="Script" path="res://canvas/canvas.gd" id="1_r7nbo"]
+[ext_resource type="PackedScene" uid="uid://u4054tmwc6df" path="res://canvas/assets/CanvasPart.glb" id="2_pq81b"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s8aem"]
+size = Vector3(3.2, 2.4, 0.01)
+
+[node name="Canvas" type="Node3D"]
+script = ExtResource("1_r7nbo")
+canvasElem = ExtResource("2_pq81b")
+size = Vector2i(16, 12)
+tileSize = 0.2
+
+[node name="Area" type="Area3D" parent="."]
+monitoring = false
+
+[node name="Shape" type="CollisionShape3D" parent="Area"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1.1, 0)
+shape = SubResource("BoxShape3D_s8aem")
+
+[node name="Canvas (0, 0)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+
+[node name="Canvas (0, 1)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+
+[node name="Canvas (0, 2)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+
+[node name="Canvas (0, 3)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+
+[node name="Canvas (0, 4)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+
+[node name="Canvas (0, 5)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Canvas (0, 6)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+
+[node name="Canvas (0, 7)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
+
+[node name="Canvas (0, 8)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
+
+[node name="Canvas (0, 9)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
+
+[node name="Canvas (0, 10)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="Canvas (0, 11)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2, 0)
+
+[node name="Canvas (1, 0)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0, 0)
+
+[node name="Canvas (1, 1)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0.2, 0)
+
+[node name="Canvas (1, 2)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0.4, 0)
+
+[node name="Canvas (1, 3)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0.6, 0)
+
+[node name="Canvas (1, 4)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0.8, 0)
+
+[node name="Canvas (1, 5)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 1, 0)
+
+[node name="Canvas (1, 6)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 1.2, 0)
+
+[node name="Canvas (1, 7)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 1.4, 0)
+
+[node name="Canvas (1, 8)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 1.6, 0)
+
+[node name="Canvas (1, 9)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 1.8, 0)
+
+[node name="Canvas (1, 10)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 2, 0)
+
+[node name="Canvas (1, 11)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 2.2, 0)
+
+[node name="Canvas (2, 0)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 0, 0)
+
+[node name="Canvas (2, 1)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 0.2, 0)
+
+[node name="Canvas (2, 2)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 0.4, 0)
+
+[node name="Canvas (2, 3)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 0.6, 0)
+
+[node name="Canvas (2, 4)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 0.8, 0)
+
+[node name="Canvas (2, 5)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 1, 0)
+
+[node name="Canvas (2, 6)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 1.2, 0)
+
+[node name="Canvas (2, 7)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 1.4, 0)
+
+[node name="Canvas (2, 8)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 1.6, 0)
+
+[node name="Canvas (2, 9)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 1.8, 0)
+
+[node name="Canvas (2, 10)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 2, 0)
+
+[node name="Canvas (2, 11)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 2.2, 0)
+
+[node name="Canvas (3, 0)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0, 0)
+
+[node name="Canvas (3, 1)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0.2, 0)
+
+[node name="Canvas (3, 2)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0.4, 0)
+
+[node name="Canvas (3, 3)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0.6, 0)
+
+[node name="Canvas (3, 4)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0.8, 0)
+
+[node name="Canvas (3, 5)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 1, 0)
+
+[node name="Canvas (3, 6)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 1.2, 0)
+
+[node name="Canvas (3, 7)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 1.4, 0)
+
+[node name="Canvas (3, 8)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 1.6, 0)
+
+[node name="Canvas (3, 9)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 1.8, 0)
+
+[node name="Canvas (3, 10)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 2, 0)
+
+[node name="Canvas (3, 11)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 2.2, 0)
+
+[node name="Canvas (4, 0)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0, 0)
+
+[node name="Canvas (4, 1)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0.2, 0)
+
+[node name="Canvas (4, 2)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0.4, 0)
+
+[node name="Canvas (4, 3)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0.6, 0)
+
+[node name="Canvas (4, 4)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0.8, 0)
+
+[node name="Canvas (4, 5)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 1, 0)
+
+[node name="Canvas (4, 6)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 1.2, 0)
+
+[node name="Canvas (4, 7)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 1.4, 0)
+
+[node name="Canvas (4, 8)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 1.6, 0)
+
+[node name="Canvas (4, 9)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 1.8, 0)
+
+[node name="Canvas (4, 10)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 2, 0)
+
+[node name="Canvas (4, 11)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 2.2, 0)
+
+[node name="Canvas (5, 0)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="Canvas (5, 1)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.2, 0)
+
+[node name="Canvas (5, 2)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.4, 0)
+
+[node name="Canvas (5, 3)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.6, 0)
+
+[node name="Canvas (5, 4)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.8, 0)
+
+[node name="Canvas (5, 5)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0)
+
+[node name="Canvas (5, 6)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.2, 0)
+
+[node name="Canvas (5, 7)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.4, 0)
+
+[node name="Canvas (5, 8)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.6, 0)
+
+[node name="Canvas (5, 9)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.8, 0)
+
+[node name="Canvas (5, 10)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, 0)
+
+[node name="Canvas (5, 11)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2.2, 0)
+
+[node name="Canvas (6, 0)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2, 0, 0)
+
+[node name="Canvas (6, 1)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2, 0.2, 0)
+
+[node name="Canvas (6, 2)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2, 0.4, 0)
+
+[node name="Canvas (6, 3)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2, 0.6, 0)
+
+[node name="Canvas (6, 4)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2, 0.8, 0)
+
+[node name="Canvas (6, 5)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2, 1, 0)
+
+[node name="Canvas (6, 6)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2, 1.2, 0)
+
+[node name="Canvas (6, 7)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2, 1.4, 0)
+
+[node name="Canvas (6, 8)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2, 1.6, 0)
+
+[node name="Canvas (6, 9)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2, 1.8, 0)
+
+[node name="Canvas (6, 10)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2, 2, 0)
+
+[node name="Canvas (6, 11)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2, 2.2, 0)
+
+[node name="Canvas (7, 0)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4, 0, 0)
+
+[node name="Canvas (7, 1)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4, 0.2, 0)
+
+[node name="Canvas (7, 2)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4, 0.4, 0)
+
+[node name="Canvas (7, 3)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4, 0.6, 0)
+
+[node name="Canvas (7, 4)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4, 0.8, 0)
+
+[node name="Canvas (7, 5)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4, 1, 0)
+
+[node name="Canvas (7, 6)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4, 1.2, 0)
+
+[node name="Canvas (7, 7)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4, 1.4, 0)
+
+[node name="Canvas (7, 8)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4, 1.6, 0)
+
+[node name="Canvas (7, 9)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4, 1.8, 0)
+
+[node name="Canvas (7, 10)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4, 2, 0)
+
+[node name="Canvas (7, 11)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4, 2.2, 0)
+
+[node name="Canvas (8, 0)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6, 0, 0)
+
+[node name="Canvas (8, 1)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6, 0.2, 0)
+
+[node name="Canvas (8, 2)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6, 0.4, 0)
+
+[node name="Canvas (8, 3)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6, 0.6, 0)
+
+[node name="Canvas (8, 4)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6, 0.8, 0)
+
+[node name="Canvas (8, 5)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6, 1, 0)
+
+[node name="Canvas (8, 6)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6, 1.2, 0)
+
+[node name="Canvas (8, 7)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6, 1.4, 0)
+
+[node name="Canvas (8, 8)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6, 1.6, 0)
+
+[node name="Canvas (8, 9)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6, 1.8, 0)
+
+[node name="Canvas (8, 10)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6, 2, 0)
+
+[node name="Canvas (8, 11)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6, 2.2, 0)
+
+[node name="Canvas (9, 0)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8, 0, 0)
+
+[node name="Canvas (9, 1)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8, 0.2, 0)
+
+[node name="Canvas (9, 2)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8, 0.4, 0)
+
+[node name="Canvas (9, 3)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8, 0.6, 0)
+
+[node name="Canvas (9, 4)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8, 0.8, 0)
+
+[node name="Canvas (9, 5)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8, 1, 0)
+
+[node name="Canvas (9, 6)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8, 1.2, 0)
+
+[node name="Canvas (9, 7)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8, 1.4, 0)
+
+[node name="Canvas (9, 8)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8, 1.6, 0)
+
+[node name="Canvas (9, 9)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8, 1.8, 0)
+
+[node name="Canvas (9, 10)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8, 2, 0)
+
+[node name="Canvas (9, 11)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8, 2.2, 0)
+
+[node name="Canvas (10, 0)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+
+[node name="Canvas (10, 1)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.2, 0)
+
+[node name="Canvas (10, 2)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.4, 0)
+
+[node name="Canvas (10, 3)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.6, 0)
+
+[node name="Canvas (10, 4)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.8, 0)
+
+[node name="Canvas (10, 5)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, 0)
+
+[node name="Canvas (10, 6)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1.2, 0)
+
+[node name="Canvas (10, 7)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1.4, 0)
+
+[node name="Canvas (10, 8)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1.6, 0)
+
+[node name="Canvas (10, 9)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1.8, 0)
+
+[node name="Canvas (10, 10)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, 0)
+
+[node name="Canvas (10, 11)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2.2, 0)
+
+[node name="Canvas (11, 0)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2, 0, 0)
+
+[node name="Canvas (11, 1)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2, 0.2, 0)
+
+[node name="Canvas (11, 2)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2, 0.4, 0)
+
+[node name="Canvas (11, 3)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2, 0.6, 0)
+
+[node name="Canvas (11, 4)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2, 0.8, 0)
+
+[node name="Canvas (11, 5)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2, 1, 0)
+
+[node name="Canvas (11, 6)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2, 1.2, 0)
+
+[node name="Canvas (11, 7)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2, 1.4, 0)
+
+[node name="Canvas (11, 8)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2, 1.6, 0)
+
+[node name="Canvas (11, 9)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2, 1.8, 0)
+
+[node name="Canvas (11, 10)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2, 2, 0)
+
+[node name="Canvas (11, 11)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2, 2.2, 0)
+
+[node name="Canvas (12, 0)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4, 0, 0)
+
+[node name="Canvas (12, 1)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4, 0.2, 0)
+
+[node name="Canvas (12, 2)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4, 0.4, 0)
+
+[node name="Canvas (12, 3)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4, 0.6, 0)
+
+[node name="Canvas (12, 4)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4, 0.8, 0)
+
+[node name="Canvas (12, 5)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4, 1, 0)
+
+[node name="Canvas (12, 6)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4, 1.2, 0)
+
+[node name="Canvas (12, 7)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4, 1.4, 0)
+
+[node name="Canvas (12, 8)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4, 1.6, 0)
+
+[node name="Canvas (12, 9)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4, 1.8, 0)
+
+[node name="Canvas (12, 10)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4, 2, 0)
+
+[node name="Canvas (12, 11)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4, 2.2, 0)
+
+[node name="Canvas (13, 0)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6, 0, 0)
+
+[node name="Canvas (13, 1)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6, 0.2, 0)
+
+[node name="Canvas (13, 2)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6, 0.4, 0)
+
+[node name="Canvas (13, 3)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6, 0.6, 0)
+
+[node name="Canvas (13, 4)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6, 0.8, 0)
+
+[node name="Canvas (13, 5)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6, 1, 0)
+
+[node name="Canvas (13, 6)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6, 1.2, 0)
+
+[node name="Canvas (13, 7)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6, 1.4, 0)
+
+[node name="Canvas (13, 8)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6, 1.6, 0)
+
+[node name="Canvas (13, 9)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6, 1.8, 0)
+
+[node name="Canvas (13, 10)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6, 2, 0)
+
+[node name="Canvas (13, 11)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6, 2.2, 0)
+
+[node name="Canvas (14, 0)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8, 0, 0)
+
+[node name="Canvas (14, 1)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8, 0.2, 0)
+
+[node name="Canvas (14, 2)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8, 0.4, 0)
+
+[node name="Canvas (14, 3)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8, 0.6, 0)
+
+[node name="Canvas (14, 4)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8, 0.8, 0)
+
+[node name="Canvas (14, 5)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8, 1, 0)
+
+[node name="Canvas (14, 6)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8, 1.2, 0)
+
+[node name="Canvas (14, 7)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8, 1.4, 0)
+
+[node name="Canvas (14, 8)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8, 1.6, 0)
+
+[node name="Canvas (14, 9)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8, 1.8, 0)
+
+[node name="Canvas (14, 10)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8, 2, 0)
+
+[node name="Canvas (14, 11)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8, 2.2, 0)
+
+[node name="Canvas (15, 0)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+
+[node name="Canvas (15, 1)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.2, 0)
+
+[node name="Canvas (15, 2)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.4, 0)
+
+[node name="Canvas (15, 3)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.6, 0)
+
+[node name="Canvas (15, 4)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.8, 0)
+
+[node name="Canvas (15, 5)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, 0)
+
+[node name="Canvas (15, 6)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1.2, 0)
+
+[node name="Canvas (15, 7)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1.4, 0)
+
+[node name="Canvas (15, 8)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1.6, 0)
+
+[node name="Canvas (15, 9)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1.8, 0)
+
+[node name="Canvas (15, 10)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 2, 0)
+
+[node name="Canvas (15, 11)" type="Node3D" parent="." instance=ExtResource("2_pq81b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 2.2, 0)

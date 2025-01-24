@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cads2xvqvelx0"]
+
+[ext_resource type="Script" path="res://camera/camera.gd" id="1_4bddk"]
+
+[node name="Camera" type="Camera3D"]
+script = ExtResource("1_4bddk")
+
+[node name="mouseRay" type="RayCast3D" parent="."]
+collide_with_areas = true
+collide_with_bodies = false
