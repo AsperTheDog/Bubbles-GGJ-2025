@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://btqjjb8c177ti"]
+
+[ext_resource type="PackedScene" uid="uid://bcxq2wbaag2a7" path="res://buildings/assets/generator.glb" id="1_frs4p"]
+[ext_resource type="Script" path="res://buildings/assets/generator.gd" id="2_fby5j"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v2n85"]
+size = Vector3(0.706604, 0.594788, 0.289917)
+
+[node name="generator" instance=ExtResource("1_frs4p")]
+script = ExtResource("2_fby5j")
+
+[node name="Area3D" type="Area3D" parent="." index="4"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.196625, -0.0267639, 0.10199)
+shape = SubResource("BoxShape3D_v2n85")

@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://wnph6ssq0lyr"]
+
+[ext_resource type="Script" path="res://buildings/assets/fan.gd" id="1_vrpkn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xsac8"]
+albedo_color = Color(1, 1, 0.313726, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_e4sg1"]
+material = SubResource("StandardMaterial3D_xsac8")
+size = Vector3(0.17, 0.17, 0.15)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vm1kn"]
+size = Vector3(0.170013, 0.168945, 0.157227)
+
+[node name="Fan" type="Node3D"]
+script = ExtResource("1_vrpkn")
+
+[node name="Block" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0823724)
+mesh = SubResource("BoxMesh_e4sg1")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000411987, -0.00244141, 0.0834961)
+shape = SubResource("BoxShape3D_vm1kn")

@@ -1,6 +1,19 @@
 class_name MainCamera extends Camera3D
 
-@onready var ray : RayCast3D = $mouseRay
+@onready var ray: RayCast3D = $mouseRay
+@onready var minZ: float = 0.4
+@onready var maxZ: float = 10.0
+@onready var varZ: float = 0.95
+
+var lookingCoords: Vector2i
+var isDragging: bool = false
+
+var canvasMin: Vector2 = Vector2.ZERO
+var canvasMax: Vector2 = Vector2.ONE
+
+
+func _process(delta):
+	isDragging = Input.is_action_pressed("drag")
 
 func getCanvasCoord(screenCoord: Vector2, tileSize: float) -> Vector2i:
 	var direction := project_ray_normal(screenCoord)
@@ -10,3 +23,13 @@ func getCanvasCoord(screenCoord: Vector2, tileSize: float) -> Vector2i:
 		ret /= tileSize
 		return Vector2i(round(ret.x), round(ret.y))
 	return Vector2i.MAX
+
+func _input(event: InputEvent) -> void:
+	var allowScroll = get_tree().current_scene.allowScroll
+	if event.is_action("zoomIn") and allowScroll:
+		position.z = max(minZ, position.z * varZ)
+	elif event.is_action("zoomOut") and allowScroll:
+		position.z = min(maxZ, position.z / varZ)
+	if event is InputEventMouseMotion and isDragging:
+		position.x = clamp(position.x - (event as InputEventMouseMotion).relative.x * 0.0015 * position.z, canvasMin.x, canvasMax.x)
+		position.y = clamp(position.y + (event as InputEventMouseMotion).relative.y * 0.0015 * position.z, canvasMin.y, canvasMax.y)

@@ -1,0 +1,200 @@
+[gd_scene load_steps=15 format=3 uid="uid://b4pey55yg1pxq"]
+
+[ext_resource type="Script" path="res://ui/ui.gd" id="1_nwwfa"]
+[ext_resource type="Texture2D" uid="uid://cun1606ue0w8m" path="res://canvas/assets/box.png" id="2_qu7xb"]
+
+[sub_resource type="Gradient" id="Gradient_1wc6q"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8nyq8"]
+gradient = SubResource("Gradient_1wc6q")
+
+[sub_resource type="Gradient" id="Gradient_dq6pv"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 1, 1, 0.784314)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_xkyqx"]
+gradient = SubResource("Gradient_dq6pv")
+
+[sub_resource type="Gradient" id="Gradient_c2x7v"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 1, 1, 0.196078)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_dmkj7"]
+gradient = SubResource("Gradient_c2x7v")
+
+[sub_resource type="Gradient" id="Gradient_e4qai"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_v4uaj"]
+gradient = SubResource("Gradient_e4qai")
+
+[sub_resource type="Gradient" id="Gradient_e8d3s"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 0.346577, 0.280009, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_hi6l8"]
+gradient = SubResource("Gradient_e8d3s")
+
+[sub_resource type="Gradient" id="Gradient_qohwt"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 0.571068, 0.508893, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_roeqi"]
+gradient = SubResource("Gradient_qohwt")
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nwwfa")
+selectedColor = Color(1, 0.552941, 0.364706, 1)
+unselectedColor = Color(0.647059, 0.647059, 0.647059, 1)
+
+[node name="SidePanel" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 0.739
+anchor_right = 1.001
+anchor_bottom = 1.0
+offset_left = -0.328003
+offset_right = -0.1521
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="BoxRect" type="TextureRect" parent="SidePanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_qu7xb")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="SidePanel/BoxRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 30
+
+[node name="ScrollContainer" type="ScrollContainer" parent="SidePanel/BoxRect/MarginContainer"]
+layout_mode = 2
+mouse_force_pass_scroll_events = false
+horizontal_scroll_mode = 0
+
+[node name="Selector" type="GridContainer" parent="SidePanel/BoxRect/MarginContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 2
+
+[node name="Placeholder" type="AspectRatioContainer" parent="SidePanel/BoxRect/MarginContainer/ScrollContainer/Selector"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+stretch_mode = 0
+alignment_vertical = 0
+
+[node name="ColorRect" type="ColorRect" parent="SidePanel/BoxRect/MarginContainer/ScrollContainer/Selector/Placeholder"]
+layout_mode = 2
+color = Color(0.648488, 0.648488, 0.648488, 1)
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="SidePanel/BoxRect/MarginContainer/ScrollContainer/Selector/Placeholder/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="SidePanel/BoxRect/MarginContainer/ScrollContainer/Selector/Placeholder/ColorRect/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(136, 136)
+render_target_update_mode = 0
+
+[node name="Camera3D" type="Camera3D" parent="SidePanel/BoxRect/MarginContainer/ScrollContainer/Selector/Placeholder/ColorRect/SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.201981, 0.1, 0.24)
+cull_mask = 2
+
+[node name="Label" type="Label" parent="SidePanel/BoxRect/MarginContainer/ScrollContainer/Selector/Placeholder/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+autowrap_mode = 2
+
+[node name="Button" type="TextureButton" parent="SidePanel/BoxRect/MarginContainer/ScrollContainer/Selector/Placeholder"]
+layout_mode = 2
+texture_normal = SubResource("GradientTexture1D_8nyq8")
+texture_pressed = SubResource("GradientTexture1D_xkyqx")
+texture_hover = SubResource("GradientTexture1D_dmkj7")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="OpenMarker" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 0.738
+anchor_right = 0.738
+offset_left = -0.176025
+offset_right = -0.176025
+
+[node name="ClosedMarker" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 0.984
+anchor_right = 0.984
+offset_left = 0.432007
+offset_right = 0.432007
+
+[node name="EndMarker" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 1.246
+anchor_right = 1.246
+offset_left = -0.39209
+offset_right = -0.39209
+
+[node name="DeleteElem" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 100.0
+offset_bottom = 100.0
+
+[node name="MarginContainer" type="MarginContainer" parent="DeleteElem"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+
+[node name="TextureButton" type="TextureButton" parent="DeleteElem/MarginContainer"]
+layout_mode = 2
+texture_normal = SubResource("GradientTexture1D_v4uaj")
+texture_pressed = SubResource("GradientTexture1D_hi6l8")
+texture_hover = SubResource("GradientTexture1D_roeqi")
+ignore_texture_size = true
+stretch_mode = 0
+
+[connection signal="mouse_entered" from="SidePanel/BoxRect/MarginContainer/ScrollContainer" to="." method="onUIEntered"]
+[connection signal="mouse_exited" from="SidePanel/BoxRect/MarginContainer/ScrollContainer" to="." method="onUIExited"]
+[connection signal="pressed" from="DeleteElem/MarginContainer/TextureButton" to="." method="selectDemoTool"]

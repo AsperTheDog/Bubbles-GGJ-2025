@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="Building" load_steps=10 format=3 uid="uid://dlyewu2cbijbl"]
+
+[ext_resource type="Script" path="res://buildings/slot.gd" id="1_to1t4"]
+[ext_resource type="PackedScene" uid="uid://wnph6ssq0lyr" path="res://buildings/assets/fan.tscn" id="2_uxdtv"]
+[ext_resource type="Script" path="res://buildings/screw.gd" id="3_tayqf"]
+[ext_resource type="Script" path="res://buildings/building.gd" id="4_2e7td"]
+
+[sub_resource type="Resource" id="Resource_vwuor"]
+script = ExtResource("1_to1t4")
+position = Vector2i(0, 0)
+type = 0
+
+[sub_resource type="Resource" id="Resource_jureh"]
+script = ExtResource("3_tayqf")
+coord = Vector2i(0, 0)
+position = 0
+
+[sub_resource type="Resource" id="Resource_k8qqd"]
+script = ExtResource("3_tayqf")
+coord = Vector2i(0, 0)
+position = 1
+
+[sub_resource type="Resource" id="Resource_q6xlh"]
+script = ExtResource("3_tayqf")
+coord = Vector2i(0, 0)
+position = 2
+
+[sub_resource type="Resource" id="Resource_u75fk"]
+script = ExtResource("3_tayqf")
+coord = Vector2i(0, 0)
+position = 3
+
+[resource]
+script = ExtResource("4_2e7td")
+name = "Fan"
+mesh = ExtResource("2_uxdtv")
+canBePlaced = true
+placeBounds = Array[Vector2i]([Vector2i(0, 0)])
+hitBounds = Array[ExtResource("1_to1t4")]([SubResource("Resource_vwuor")])
+screws = Array[ExtResource("3_tayqf")]([SubResource("Resource_jureh"), SubResource("Resource_k8qqd"), SubResource("Resource_q6xlh"), SubResource("Resource_u75fk")])

@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://kpwigx1ui272"]
+[gd_scene load_steps=8 format=3 uid="uid://kpwigx1ui272"]
 
 [ext_resource type="PackedScene" uid="uid://cads2xvqvelx0" path="res://camera/camera.tscn" id="1_7paam"]
 [ext_resource type="Script" path="res://main.gd" id="1_c2rtc"]
 [ext_resource type="PackedScene" uid="uid://c1hjvkwwftrnd" path="res://canvas/canvas.tscn" id="2_qgtxn"]
+[ext_resource type="PackedScene" uid="uid://b4pey55yg1pxq" path="res://ui/ui.tscn" id="4_jens2"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1sinj"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -16,16 +17,6 @@ background_mode = 2
 sky = SubResource("Sky_ppcok")
 tonemap_mode = 2
 glow_enabled = true
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x227l"]
-albedo_color = Color(1, 0, 0, 1)
-emission_enabled = true
-emission = Color(1, 0, 0, 1)
-
-[sub_resource type="SphereMesh" id="SphereMesh_xdbg1"]
-material = SubResource("StandardMaterial3D_x227l")
-radius = 0.01
-height = 0.02
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_c2rtc")
@@ -42,5 +33,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.39257, 1.09821, 1.65036)
 
 [node name="Canvas" parent="." instance=ExtResource("2_qgtxn")]
 
-[node name="debug" type="MeshInstance3D" parent="."]
-mesh = SubResource("SphereMesh_xdbg1")
+[node name="UI" parent="." instance=ExtResource("4_jens2")]
