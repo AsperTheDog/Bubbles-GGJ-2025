@@ -5,7 +5,7 @@ signal elementSelected(index: int) # 0 is deletion tool
 @export var selectedColor: Color
 @export var unselectedColor: Color
 
-@onready var placeholder: AspectRatioContainer = %Placeholder
+@onready var placeholder: TextureRect = %Placeholder
 @onready var selector: GridContainer = %Selector
 
 var tileSize: float = 1.0
@@ -27,14 +27,16 @@ func _ready():
 		if not building.canBePlaced: continue
 		var entry := placeholder.duplicate()
 		entry.name = building.name
-		entry.get_node("ColorRect").color = unselectedColor
 		selector.add_child(entry)
+		entry.texture = entry.texture.duplicate()
+		entry.texture.gradient = entry.texture.gradient.duplicate()
+		setSelected(selector.get_child_count() - 1, false)
 		entry.get_node("Button").pressed.connect(func(): selected = count)
 		entry.show()
 		if building.mesh != null:
 			var buildingSize := building.getSize()
 			var zoomOut = max(buildingSize.x * 1.5 * tileSize, buildingSize.y * 1.8 * tileSize)
-			var subViewport = entry.get_node("ColorRect/SubViewportContainer/SubViewport")
+			var subViewport = entry.get_node("SubViewportContainer/SubViewport")
 			var newMesh: BaseBuilding = building.mesh.instantiate()
 			newMesh.makePreview(count)
 			subViewport.add_child(newMesh)
@@ -47,8 +49,8 @@ func _ready():
 			var halfTile = tileSize / 2
 			cam.look_at(Vector3(((buildingSize.x - 1) * halfTile), ((buildingSize.y - 1) * halfTile), 0.1))
 		else:
-			entry.get_node("ColorRect/SubViewportContainer").queue_free()
-			entry.get_node("ColorRect/Label").text = building.name
+			entry.get_node("SubViewportContainer").queue_free()
+			entry.get_node("Label").text = building.name
 		count += 1
 
 
@@ -82,9 +84,8 @@ func _input(event: InputEvent) -> void:
 
 func setSelected(index: int, doSelect: bool):
 	if index <= 0: return
-	var child: Control = selector.get_child(index)
-	var rect: ColorRect = child.get_node("ColorRect")
-	rect.color = selectedColor if doSelect else unselectedColor
+	var child: TextureRect = selector.get_child(index)
+	child.texture.gradient.set_color(0, selectedColor if doSelect else unselectedColor)
 
 
 func selectDemoTool():
