@@ -1,26 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://wnph6ssq0lyr"]
+[gd_scene load_steps=4 format=3 uid="uid://dw7fjv3t1lo26"]
 
+[ext_resource type="PackedScene" uid="uid://cdr7jeg1a2pfb" path="res://buildings/assets/fan.glb" id="1_qq77l"]
 [ext_resource type="Script" path="res://buildings/assets/fan.gd" id="1_vrpkn"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xsac8"]
-albedo_color = Color(1, 1, 0.313726, 1)
+[sub_resource type="BoxShape3D" id="BoxShape3D_o0otu"]
+size = Vector3(0.167236, 0.174316, 0.25824)
 
-[sub_resource type="BoxMesh" id="BoxMesh_e4sg1"]
-material = SubResource("StandardMaterial3D_xsac8")
-size = Vector3(0.17, 0.17, 0.15)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_vm1kn"]
-size = Vector3(0.170013, 0.168945, 0.157227)
-
-[node name="Fan" type="Node3D"]
+[node name="fan" instance=ExtResource("1_qq77l")]
 script = ExtResource("1_vrpkn")
 
-[node name="Block" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0823724)
-mesh = SubResource("BoxMesh_e4sg1")
+[node name="Area3D" type="Area3D" parent="." index="3"]
 
-[node name="Area3D" type="Area3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000411987, -0.00244141, 0.0834961)
-shape = SubResource("BoxShape3D_vm1kn")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00354004, -0.00219727, 0.140289)
+shape = SubResource("BoxShape3D_o0otu")

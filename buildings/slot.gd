@@ -10,3 +10,4 @@ enum SlotType {
 
 @export var position: Vector2i
 @export var type: SlotType
+@export var bursts: bool

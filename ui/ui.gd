@@ -32,7 +32,7 @@ func _ready():
 		entry.show()
 		if building.mesh != null:
 			var buildingSize := building.getSize()
-			var zoomOut = max(buildingSize.x * tileSize, buildingSize.y * 1.2 * tileSize)
+			var zoomOut = max(buildingSize.x * 1.5 * tileSize, buildingSize.y * 1.8 * tileSize)
 			var subViewport = entry.get_node("ColorRect/SubViewportContainer/SubViewport")
 			var newMesh: BaseBuilding = building.mesh.instantiate()
 			newMesh.makePreview(count)

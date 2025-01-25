@@ -22,8 +22,8 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		canvasPos = camera.getCanvasCoord(event.position, canvas.tileSize)
 	if event.is_action_pressed("debug"):
-		var gen = preload("res://buildings/definitions/generator.tres")
-		canvas.placeBuilding(gen, Vector2i.ONE * 3)
+		var gen = preload("res://buildings/definitions/fan.tres")
+		canvas.placeBuilding(gen, Vector2i.ONE * 3, BaseBuilding.Orientation.LEFT)
 
 func getCamera():
 	return camera

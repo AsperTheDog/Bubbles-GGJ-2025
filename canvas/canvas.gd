@@ -4,6 +4,9 @@ class_name Canvas extends Node3D
 @export var size: Vector2i
 @export var tileSize: float = 0.1
 
+@export_group("Level")
+@export var levelElements: Level
+
 @onready var board: Node3D = $Board/Tiles
 @onready var buildings: Node3D = $Board/Buildings
 @onready var areaShape: CollisionShape3D = $Board/Area/Shape
@@ -45,32 +48,56 @@ func getBuildingOverlaps(building: Building, newPos: Vector2i):
 			var oldPos := bound + placedBuild.position
 			for newBound: Vector2i in building.placeBounds:
 				if newBound + newPos == oldPos:
-					return 
+					return placedBuild
 	return null
 
 
-func placeBuilding(building: Building, newPos: Vector2i):
+func placeBuilding(building: Building, newPos: Vector2i, orientation: BaseBuilding.Orientation):
 	var placement = BuildingPlacement.new()
 	placement.building = building
 	placement.position = newPos
-	var obj = placeObjectInCanvas(building, newPos)
+	var obj: BaseBuilding = placeObjectInCanvas(building, newPos)
+	obj.orient(orientation)
+	obj.makeGhost()
 	placement.hitbox = obj.get_node("Area3D")
 
 
 func placeObjectInCanvas(building: Building, pos: Vector2i):
-	var obj: Node3D = building.mesh.instantiate()
+	var obj: BaseBuilding = building.mesh.instantiate()
+	obj.dupeMaterials()
 	buildings.add_child(obj)
-	obj.scale = Vector3.ZERO
-	obj.global_position = Vector3(pos.x * tileSize, pos.y * tileSize, 1)
+	obj.scale = Vector3.ONE * 0.01
+	obj.global_position = Vector3(pos.x * tileSize, pos.y * tileSize, 0.5)
 	var tween = create_tween()
 	tween.tween_property(obj, "scale", Vector3.ONE, 0.2)
 	tween.tween_property(obj, "position:z", 0, 0.5)
+	tween = create_tween()
+	tween.tween_interval(0.3)
+	for screw: Screw in building.screws:
+		tween.tween_callback(placeScrew.bind(screw, obj, pos))
+		tween.tween_interval(0.3)
 	return obj
 
-func placeScrew(screw: Screw, parent: BaseBuilding):
+func placeScrew(screw: Screw, parent: BaseBuilding, buildingPos: Vector2i):
 	var scObj = screwMesh.instantiate()
 	parent.add_child(scObj)
-	
+	scObj.scale = Vector3.ONE * 0.01
+	var offset: Vector2 = Vector2.ZERO
+	var halfTile = tileSize / 2
+	match screw.position:
+		Screw.ScrewPosition.TOP_LEFT:
+			offset = Vector2(-halfTile, halfTile)
+		Screw.ScrewPosition.BOTTOM_LEFT:
+			offset = Vector2(-halfTile, -halfTile)
+		Screw.ScrewPosition.TOP_RIGHT:
+			offset = Vector2(halfTile, halfTile)
+		Screw.ScrewPosition.BOTTOM_RIGHT:
+			offset = Vector2(halfTile, -halfTile)
+	var finalPos := Vector2(screw.coord) * tileSize + offset
+	scObj.position = Vector3(finalPos.x, finalPos.y, 0.5)
+	var tween = create_tween()
+	tween.tween_property(scObj, "scale", Vector3.ONE, 0.2)
+	tween.tween_property(scObj, "position:z", 0, 0.5)
 
 #region tilt
 

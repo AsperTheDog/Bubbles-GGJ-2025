@@ -8,12 +8,5 @@ func _ready() -> void:
 	fanTween.tween_callback(func(): $Fan.rotation.z = 0)
 
 
-func makePreview(index: int):
-	$Fan.layers = 0
-	$Fan.set_layer_mask_value(index + 2, true)
-	$LightGreen.layers = 0
-	$LightGreen.set_layer_mask_value(index + 2, true)
-	$LightRed.layers = 0
-	$LightRed.set_layer_mask_value(index + 2, true)
-	$PlateGen.layers = 0
-	$PlateGen.set_layer_mask_value(index + 2, true)
+func getMeshes():
+	return [$Fan, $LightGreen, $LightRed, $PlateGen]

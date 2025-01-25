@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Building" load_steps=13 format=3 uid="uid://b50oi0ewyj1op"]
+[gd_resource type="Resource" script_class="Building" load_steps=10 format=3 uid="uid://b50oi0ewyj1op"]
 
 [ext_resource type="Script" path="res://buildings/slot.gd" id="1_7v5p2"]
 [ext_resource type="PackedScene" uid="uid://btqjjb8c177ti" path="res://buildings/assets/generator.tscn" id="2_qryfo"]
@@ -9,47 +9,35 @@
 script = ExtResource("1_7v5p2")
 position = Vector2i(0, 0)
 type = 0
-
-[sub_resource type="Resource" id="Resource_hd1vy"]
-script = ExtResource("1_7v5p2")
-position = Vector2i(0, 1)
-type = 0
+bursts = false
 
 [sub_resource type="Resource" id="Resource_7eh4m"]
 script = ExtResource("1_7v5p2")
 position = Vector2i(1, 0)
 type = 0
-
-[sub_resource type="Resource" id="Resource_a18jh"]
-script = ExtResource("1_7v5p2")
-position = Vector2i(1, 1)
-type = 0
+bursts = false
 
 [sub_resource type="Resource" id="Resource_3vseg"]
 script = ExtResource("1_7v5p2")
 position = Vector2i(2, 0)
 type = 0
-
-[sub_resource type="Resource" id="Resource_vimmh"]
-script = ExtResource("1_7v5p2")
-position = Vector2i(2, 1)
-type = 0
+bursts = false
 
 [sub_resource type="Resource" id="Resource_2sya6"]
 script = ExtResource("3_qekxo")
-coord = Vector2i(1, 0)
-position = 2
+coord = Vector2i(0, 1)
+position = 0
 
 [sub_resource type="Resource" id="Resource_hdhy5"]
 script = ExtResource("3_qekxo")
-coord = Vector2i(1, 1)
-position = 0
+coord = Vector2i(2, 1)
+position = 1
 
 [resource]
 script = ExtResource("4_v285j")
 name = "Generator"
 mesh = ExtResource("2_qryfo")
 canBePlaced = false
-placeBounds = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1), Vector2i(1, 0), Vector2i(1, 1), Vector2i(2, 0), Vector2i(2, 1)])
-hitBounds = Array[ExtResource("1_7v5p2")]([SubResource("Resource_eo6f6"), SubResource("Resource_hd1vy"), SubResource("Resource_7eh4m"), SubResource("Resource_a18jh"), SubResource("Resource_3vseg"), SubResource("Resource_vimmh")])
+placeBounds = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0)])
+hitBounds = Array[ExtResource("1_7v5p2")]([SubResource("Resource_eo6f6"), SubResource("Resource_7eh4m"), SubResource("Resource_3vseg")])
 screws = Array[ExtResource("3_qekxo")]([SubResource("Resource_2sya6"), SubResource("Resource_hdhy5")])

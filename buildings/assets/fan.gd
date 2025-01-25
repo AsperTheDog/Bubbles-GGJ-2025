@@ -1,9 +1,25 @@
 extends BaseBuilding
 
+var direction: BaseBuilding.Orientation
+
 
 # Called when the node enters the scene tree for the first time.
+var fanTween: Tween = null
 func _ready() -> void:
-	pass # Replace with function body.
+	fanTween = create_tween().set_loops()
+	fanTween.tween_property($FanFan, "rotation:z", deg_to_rad(360), 0.4)
+	fanTween.tween_callback(func(): $FanFan.rotation.z = 0)
+
+
+func orient(orientation: BaseBuilding.Orientation):
+	direction = orientation
+	match orientation:
+		Orientation.TOP:
+			rotate(Vector3.FORWARD, deg_to_rad(-90))
+		Orientation.BOTTOM:
+			rotate(Vector3.FORWARD, deg_to_rad(90))
+		Orientation.RIGHT:
+			rotate(Vector3.FORWARD, deg_to_rad(180))
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -11,6 +27,5 @@ func _process(delta: float) -> void:
 	pass
 
 
-func makePreview(index: int):
-	$Block.layers = 0
-	$Block.set_layer_mask_value(index + 2, true)
+func getMeshes():
+	return [$FanPlate, $FanFan]
