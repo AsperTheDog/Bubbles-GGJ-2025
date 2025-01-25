@@ -70,6 +70,7 @@ func placeBuilding(building: Building, newPos: Vector2i, orientation: BaseBuildi
 
 func placeObjectInCanvas(building: Building, pos: Vector2i, isBolted: bool, orientation: BaseBuilding.Orientation):
 	var obj: BaseBuilding = building.mesh.instantiate()
+	obj.building = building
 	obj.dupeMaterials()
 	buildings.add_child(obj)
 	obj.scale = Vector3.ONE * 0.01
@@ -80,8 +81,6 @@ func placeObjectInCanvas(building: Building, pos: Vector2i, isBolted: bool, orie
 	tween = create_tween()
 	tween.tween_interval(0.3)
 	for screw: Screw in building.screws:
-		screw = screw.duplicate()
-		screw.rotate(BaseBuilding.getRotation(building.baseOrient, orientation))
 		tween.tween_callback(placeScrew.bind(screw, obj, pos, isBolted))
 		tween.tween_interval(0.3)
 	return obj

@@ -9,8 +9,3 @@ enum ScrewPosition {
 
 @export var coord: Vector2i
 @export var position: ScrewPosition
-
-
-func rotate(times: int):
-	for i in times:
-		position = (position + 1) % 4
