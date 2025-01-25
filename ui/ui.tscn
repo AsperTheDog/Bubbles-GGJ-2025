@@ -104,9 +104,10 @@ columns = 2
 
 [node name="Placeholder" type="AspectRatioContainer" parent="SidePanel/BoxRect/MarginContainer/ScrollContainer/Selector"]
 unique_name_in_owner = true
-visible = false
+custom_minimum_size = Vector2(0, 116)
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 0
 stretch_mode = 0
 alignment_vertical = 0
 
@@ -127,8 +128,8 @@ stretch = true
 [node name="SubViewport" type="SubViewport" parent="SidePanel/BoxRect/MarginContainer/ScrollContainer/Selector/Placeholder/ColorRect/SubViewportContainer"]
 transparent_bg = true
 handle_input_locally = false
-size = Vector2i(136, 136)
-render_target_update_mode = 0
+size = Vector2i(116, 116)
+render_target_update_mode = 4
 
 [node name="Camera3D" type="Camera3D" parent="SidePanel/BoxRect/MarginContainer/ScrollContainer/Selector/Placeholder/ColorRect/SubViewportContainer/SubViewport"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.201981, 0.1, 0.24)

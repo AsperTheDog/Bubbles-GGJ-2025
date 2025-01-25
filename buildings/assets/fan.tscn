@@ -10,6 +10,8 @@ size = Vector3(0.167236, 0.174316, 0.25824)
 script = ExtResource("1_vrpkn")
 
 [node name="Area3D" type="Area3D" parent="." index="3"]
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00354004, -0.00219727, 0.140289)

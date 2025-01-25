@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bx23nj6q3npjn"]
+
+[ext_resource type="PackedScene" uid="uid://b02fouadj4mqi" path="res://buildings/assets/fence_wall.glb" id="1_4pggt"]
+[ext_resource type="Script" path="res://buildings/assets/fence_wall.gd" id="2_moybq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0hfy7"]
+size = Vector3(0.192184, 0.0415039, 0.0355835)
+
+[node name="fence_wall" instance=ExtResource("1_4pggt")]
+script = ExtResource("2_moybq")
+
+[node name="Area3D" type="Area3D" parent="." index="2"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00145721, 0.101807, 0.0208435)
+shape = SubResource("BoxShape3D_0hfy7")

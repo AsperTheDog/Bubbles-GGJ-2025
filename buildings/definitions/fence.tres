@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="Building" load_steps=8 format=3 uid="uid://qigcq7m7ajjj"]
+
+[ext_resource type="Script" path="res://buildings/slot.gd" id="1_w5kxh"]
+[ext_resource type="PackedScene" uid="uid://bx23nj6q3npjn" path="res://buildings/assets/fence_wall.tscn" id="2_pcdxh"]
+[ext_resource type="Script" path="res://buildings/screw.gd" id="2_uhnb7"]
+[ext_resource type="Script" path="res://buildings/building.gd" id="3_d17p0"]
+
+[sub_resource type="Resource" id="Resource_pw2ws"]
+script = ExtResource("1_w5kxh")
+position = Vector2i(0, 0)
+type = 1
+bursts = false
+
+[sub_resource type="Resource" id="Resource_1sucg"]
+script = ExtResource("2_uhnb7")
+coord = Vector2i(0, 0)
+position = 0
+
+[sub_resource type="Resource" id="Resource_lp4op"]
+script = ExtResource("2_uhnb7")
+coord = Vector2i(0, 0)
+position = 1
+
+[resource]
+script = ExtResource("3_d17p0")
+name = "Wall"
+mesh = ExtResource("2_pcdxh")
+canBePlaced = true
+placeBounds = Array[Vector2i]([])
+hitBounds = Array[ExtResource("1_w5kxh")]([SubResource("Resource_pw2ws")])
+screws = Array[ExtResource("2_uhnb7")]([SubResource("Resource_1sucg"), SubResource("Resource_lp4op")])
+baseOrient = 1

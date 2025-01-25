@@ -24,6 +24,7 @@ func _ready():
 	var count = 1
 	for file in DirAccess.get_files_at("res://buildings/definitions"):
 		var building: Building = load("res://buildings/definitions/" + file)
+		if not building.canBePlaced: continue
 		var entry := placeholder.duplicate()
 		entry.name = building.name
 		entry.get_node("ColorRect").color = unselectedColor

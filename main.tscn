@@ -1,9 +1,26 @@
-[gd_scene load_steps=8 format=3 uid="uid://kpwigx1ui272"]
+[gd_scene load_steps=13 format=3 uid="uid://kpwigx1ui272"]
 
 [ext_resource type="PackedScene" uid="uid://cads2xvqvelx0" path="res://camera/camera.tscn" id="1_7paam"]
 [ext_resource type="Script" path="res://main.gd" id="1_c2rtc"]
+[ext_resource type="Script" path="res://canvas/assets/level/level.gd" id="2_nsr3x"]
 [ext_resource type="PackedScene" uid="uid://c1hjvkwwftrnd" path="res://canvas/canvas.tscn" id="2_qgtxn"]
+[ext_resource type="Script" path="res://canvas/assets/level/level_building.gd" id="3_s6xmv"]
+[ext_resource type="Resource" uid="uid://dlyewu2cbijbl" path="res://buildings/definitions/fan.tres" id="4_e5oqs"]
 [ext_resource type="PackedScene" uid="uid://b4pey55yg1pxq" path="res://ui/ui.tscn" id="4_jens2"]
+
+[sub_resource type="Resource" id="Resource_dy407"]
+script = ExtResource("3_s6xmv")
+building = ExtResource("4_e5oqs")
+placement = Vector2i(6, 8)
+orientation = 3
+
+[sub_resource type="Resource" id="Resource_tg38j"]
+script = ExtResource("2_nsr3x")
+canvasSize = Vector2i(15, 15)
+generatorXOffset = 0
+gathererXOffset = 0
+buildings = Array[ExtResource("3_s6xmv")]([SubResource("Resource_dy407")])
+defaultWall = 0
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1sinj"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -20,6 +37,7 @@ glow_enabled = true
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_c2rtc")
+levels = Array[ExtResource("2_nsr3x")]([SubResource("Resource_tg38j")])
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ij4em")

@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0ppfdiooj1oc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_orjg2"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.712863, 0.281872, 4.81307e-07, 1)
+metallic_specular = 0.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_d6l82"]
+top_radius = 0.01
+bottom_radius = 0.01
+height = 0.1
+
+[node name="WoodTack" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.0189885)
+material_override = SubResource("StandardMaterial3D_orjg2")
+mesh = SubResource("CylinderMesh_d6l82")

@@ -9,8 +9,6 @@ size = Vector3(3.2, 2.4, 0.01)
 [node name="Canvas" type="Node3D"]
 script = ExtResource("1_r7nbo")
 canvasElem = ExtResource("2_wo406")
-size = Vector2i(16, 12)
-tileSize = 0.2
 
 [node name="Board" type="Node3D" parent="."]
 

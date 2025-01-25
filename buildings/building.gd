@@ -6,6 +6,7 @@ class_name Building extends Resource
 @export var placeBounds: Array[Vector2i]
 @export var hitBounds: Array[Slot]
 @export var screws: Array[Screw]
+@export var baseOrient: BaseBuilding.Orientation
 
 
 func getSize() -> Vector2i:

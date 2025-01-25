@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Building" load_steps=5 format=3 uid="uid://dfbcx02o03aw4"]
+
+[ext_resource type="Script" path="res://buildings/slot.gd" id="1_21wkw"]
+[ext_resource type="PackedScene" uid="uid://defoe5swuiiim" path="res://buildings/assets/spikes.tscn" id="2_8rhls"]
+[ext_resource type="Script" path="res://buildings/screw.gd" id="2_twm3b"]
+[ext_resource type="Script" path="res://buildings/building.gd" id="3_lgdwm"]
+
+[resource]
+script = ExtResource("3_lgdwm")
+name = "Spiked Wall"
+mesh = ExtResource("2_8rhls")
+canBePlaced = false
+placeBounds = Array[Vector2i]([])
+hitBounds = Array[ExtResource("1_21wkw")]([])
+screws = Array[ExtResource("2_twm3b")]([])
+baseOrient = 0
