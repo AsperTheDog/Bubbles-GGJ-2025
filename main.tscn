@@ -16,7 +16,7 @@ orientation = 3
 
 [sub_resource type="Resource" id="Resource_tg38j"]
 script = ExtResource("2_nsr3x")
-canvasSize = Vector2i(15, 15)
+canvasSize = Vector2i(10, 10)
 generatorXOffset = 0
 gathererXOffset = 0
 buildings = Array[ExtResource("3_s6xmv")]([SubResource("Resource_dy407")])

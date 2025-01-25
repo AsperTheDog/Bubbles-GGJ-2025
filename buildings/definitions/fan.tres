@@ -39,3 +39,4 @@ canBePlaced = true
 placeBounds = Array[Vector2i]([Vector2i(0, 0)])
 hitBounds = Array[ExtResource("1_to1t4")]([SubResource("Resource_vwuor")])
 screws = Array[ExtResource("3_tayqf")]([SubResource("Resource_jureh"), SubResource("Resource_k8qqd"), SubResource("Resource_q6xlh"), SubResource("Resource_u75fk")])
+baseOrient = 0

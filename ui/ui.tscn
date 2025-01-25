@@ -132,7 +132,7 @@ stretch = true
 [node name="SubViewport" type="SubViewport" parent="SidePanel/BoxRect/MarginContainer/ScrollContainer/Selector/Placeholder/SubViewportContainer"]
 transparent_bg = true
 handle_input_locally = false
-size = Vector2i(116, 116)
+size = Vector2i(2, 2)
 render_target_update_mode = 0
 
 [node name="Camera3D" type="Camera3D" parent="SidePanel/BoxRect/MarginContainer/ScrollContainer/Selector/Placeholder/SubViewportContainer/SubViewport"]

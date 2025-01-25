@@ -2,9 +2,9 @@ class_name BaseBuilding extends Node3D
 
 enum Orientation {
 	LEFT,
-	TOP,
+	BOTTOM,
 	RIGHT,
-	BOTTOM
+	TOP
 }
 
 
@@ -29,5 +29,14 @@ func makeGhost():
 		mat.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
 		mat.albedo_color = Color(0.0, 1.0, 0.0, 0.7)
 
+
 func getMeshes():
 	pass
+
+
+static func getRotation(baseOrientation: BaseBuilding.Orientation, newOrientation: BaseBuilding.Orientation):
+	var count = 0
+	while newOrientation != baseOrientation:
+		count += 1
+		newOrientation = (newOrientation + 1) % 4
+	return count
