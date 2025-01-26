@@ -28,3 +28,8 @@ collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("BoxShape3D_js8fc")
+
+[node name="BuildSFX" type="FmodEventEmitter3D" parent="."]
+event_name = "event:/Interaction/Build"
+event_guid = "{9cd3c277-b7ac-4ee7-98bb-19d3134ff023}"
+auto_release = true

@@ -21,7 +21,7 @@ func _ready():
 	ui.tileSize = canvas.tileSize
 	canvas.creationFinished.connect(ui.unlockButtons)
 	canvas.availableUpdated.connect(ui.updateAvailable)
-	loadLevel(3)
+	loadLevel(0)
 
 
 func _process(delta: float):
