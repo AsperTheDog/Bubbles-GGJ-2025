@@ -115,7 +115,8 @@ func _process(delta):
 	pass
 
 func generate():
-	
+	chosenOrient = Building.Orientation.LEFT
+	placements.clear()
 	for child in tiles.get_children():
 		child.queue_free()
 		tiles.remove_child(child)
@@ -253,6 +254,7 @@ func disableConstruction():
 	mode = Mode.NONE
 	if ghostPlacement != null:
 		ghostPlacement.queue_free()
+	incorrects = []
 	ghostPlacement = null
 	for elem: BaseBuilding in buildings.get_children():
 		elem.setOverlayColor(Color.TRANSPARENT)

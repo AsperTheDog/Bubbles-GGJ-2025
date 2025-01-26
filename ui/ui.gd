@@ -39,7 +39,6 @@ func reloadLevel():
 		entry.name = element.building.name
 		selector.add_child(entry)
 		entry.texture = entry.texture.duplicate()
-		entry.texture.gradient = entry.texture.gradient.duplicate()
 		setSelected(selector.get_child_count() - 1, false)
 		updateAvailable(count)
 		entry.get_node("Button").pressed.connect(func(): selected = count)
@@ -93,7 +92,7 @@ func _input(event: InputEvent) -> void:
 func setSelected(index: int, doSelect: bool):
 	if index <= 0: return
 	var child: TextureRect = selector.get_child(index)
-	child.texture.gradient.set_color(0, selectedColor if doSelect else unselectedColor)
+	child.self_modulate = selectedColor if doSelect else unselectedColor
 
 
 func selectDemoTool():
@@ -148,6 +147,7 @@ func winTitle():
 	$ColorRect2/RichTextLabel.modulate.a = 0.0
 	tween.tween_property($ColorRect2/RichTextLabel, "modulate:a", 1.0, 0.5)
 	tween.tween_property($ColorRect2/RichTextLabel, "modulate:a", 0.0, 0.5)
+	selected = -1
 	return tween.finished
 
 func resetWin():

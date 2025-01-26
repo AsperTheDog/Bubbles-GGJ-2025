@@ -1,17 +1,9 @@
-[gd_scene load_steps=22 format=3 uid="uid://b4pey55yg1pxq"]
+[gd_scene load_steps=21 format=3 uid="uid://b4pey55yg1pxq"]
 
 [ext_resource type="Script" path="res://ui/ui.gd" id="1_nwwfa"]
 [ext_resource type="Texture2D" uid="uid://cun1606ue0w8m" path="res://canvas/assets/box.png" id="2_qu7xb"]
+[ext_resource type="Texture2D" uid="uid://cge8oqpwslv3o" path="res://ui/assets/slot.png" id="3_00u5x"]
 [ext_resource type="Texture2D" uid="uid://1hlox48ohuwq" path="res://ui/assets/Controls.png" id="3_prk52"]
-
-[sub_resource type="Gradient" id="Gradient_ajurv"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0.695503, 0.695503, 0.695503, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_rxhgl"]
-gradient = SubResource("Gradient_ajurv")
-width = 116
-height = 116
 
 [sub_resource type="Gradient" id="Gradient_1wc6q"]
 offsets = PackedFloat32Array(0)
@@ -78,7 +70,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_nwwfa")
 selectedColor = Color(1, 0.552941, 0.364706, 1)
-unselectedColor = Color(0.647059, 0.647059, 0.647059, 1)
+unselectedColor = Color(1, 1, 1, 1)
 
 [node name="SidePanel" type="Control" parent="."]
 layout_mode = 1
@@ -131,7 +123,7 @@ unique_name_in_owner = true
 visible = false
 layout_mode = 2
 size_flags_horizontal = 3
-texture = SubResource("GradientTexture2D_rxhgl")
+texture = ExtResource("3_00u5x")
 expand_mode = 5
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="SidePanel/BoxRect/MarginContainer/ScrollContainer/Selector/Placeholder"]
@@ -147,7 +139,7 @@ stretch = true
 [node name="SubViewport" type="SubViewport" parent="SidePanel/BoxRect/MarginContainer/ScrollContainer/Selector/Placeholder/SubViewportContainer"]
 transparent_bg = true
 handle_input_locally = false
-size = Vector2i(2, 2)
+size = Vector2i(96, 96)
 render_target_update_mode = 0
 
 [node name="Camera3D" type="Camera3D" parent="SidePanel/BoxRect/MarginContainer/ScrollContainer/Selector/Placeholder/SubViewportContainer/SubViewport"]
