@@ -12,9 +12,11 @@ var tileSize: float = 1.0
 
 var selected: int = -1:
 	set(value):
-		if selected == value: return
 		setSelected(selected, false)
-		selected = value
+		if selected == value:
+			selected = -1
+		else:
+			selected = value
 		setSelected(selected, true)
 		elementSelected.emit(selected)
 
