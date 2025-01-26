@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Level" load_steps=28 format=3 uid="uid://boh222lj502u7"]
+[gd_resource type="Resource" script_class="Level" load_steps=33 format=3 uid="uid://boh222lj502u7"]
 
 [ext_resource type="Script" path="res://canvas/assets/level/usable_building.gd" id="1_4yssh"]
 [ext_resource type="Script" path="res://canvas/assets/level/level_building.gd" id="1_stmod"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" path="res://canvas/assets/level/level.gd" id="2_vqn7e"]
 [ext_resource type="Resource" uid="uid://dlyewu2cbijbl" path="res://buildings/definitions/fan.tres" id="2_yrfgx"]
 [ext_resource type="Resource" uid="uid://qigcq7m7ajjj" path="res://buildings/definitions/fence.tres" id="3_lrpp3"]
+[ext_resource type="Resource" uid="uid://cuvxehreqy36t" path="res://buildings/definitions/metalPlates/metalPlate2x2.tres" id="6_fofmq"]
+[ext_resource type="Resource" uid="uid://cq1rkrov56yqo" path="res://buildings/definitions/metalPlates/metalPlate2x3.tres" id="7_jm7cq"]
 
 [sub_resource type="Resource" id="Resource_fo15r"]
 script = ExtResource("1_4yssh")
@@ -132,11 +134,29 @@ building = ExtResource("3_lrpp3")
 placement = Vector2i(6, 2)
 orientation = 2
 
+[sub_resource type="Resource" id="Resource_jbsmp"]
+script = ExtResource("1_stmod")
+building = ExtResource("6_fofmq")
+placement = Vector2i(0, 7)
+orientation = 0
+
+[sub_resource type="Resource" id="Resource_lvtva"]
+script = ExtResource("1_stmod")
+building = ExtResource("6_fofmq")
+placement = Vector2i(5, 1)
+orientation = 0
+
+[sub_resource type="Resource" id="Resource_iliw4"]
+script = ExtResource("1_stmod")
+building = ExtResource("7_jm7cq")
+placement = Vector2i(7, 6)
+orientation = 0
+
 [resource]
 script = ExtResource("2_vqn7e")
 canvasSize = Vector2i(9, 9)
 generatorXOffset = 2
 gathererXOffset = 2
-buildings = Array[ExtResource("1_stmod")]([SubResource("Resource_xmn5n"), SubResource("Resource_u2b7w"), SubResource("Resource_tvgpb"), SubResource("Resource_aewkc"), SubResource("Resource_xvygo"), SubResource("Resource_rb1vp"), SubResource("Resource_6vjhe"), SubResource("Resource_tk1rv"), SubResource("Resource_0f1rk"), SubResource("Resource_1wxst"), SubResource("Resource_pof6a"), SubResource("Resource_dqgdq"), SubResource("Resource_0s3fq"), SubResource("Resource_su0wg"), SubResource("Resource_i126k"), SubResource("Resource_3j28s"), SubResource("Resource_w6din"), SubResource("Resource_d42xg"), SubResource("Resource_dlics"), SubResource("Resource_4o5ho")])
+buildings = Array[ExtResource("1_stmod")]([SubResource("Resource_xmn5n"), SubResource("Resource_u2b7w"), SubResource("Resource_tvgpb"), SubResource("Resource_aewkc"), SubResource("Resource_xvygo"), SubResource("Resource_rb1vp"), SubResource("Resource_6vjhe"), SubResource("Resource_tk1rv"), SubResource("Resource_0f1rk"), SubResource("Resource_1wxst"), SubResource("Resource_pof6a"), SubResource("Resource_dqgdq"), SubResource("Resource_0s3fq"), SubResource("Resource_su0wg"), SubResource("Resource_i126k"), SubResource("Resource_3j28s"), SubResource("Resource_w6din"), SubResource("Resource_d42xg"), SubResource("Resource_dlics"), SubResource("Resource_4o5ho"), SubResource("Resource_jbsmp"), SubResource("Resource_lvtva"), SubResource("Resource_iliw4")])
 defaultWall = 1
 available = Array[ExtResource("1_4yssh")]([SubResource("Resource_fo15r")])

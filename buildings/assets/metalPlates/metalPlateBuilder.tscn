@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://de3qmiv5yq07q"]
+
+[ext_resource type="Script" path="res://buildings/MetalPlateBuilder.gd" id="1_d158l"]
+[ext_resource type="PackedScene" uid="uid://cqtv6sd56dihg" path="res://buildings/assets/metalPlates/metalPlate2x2.tscn" id="2_pc0vx"]
+[ext_resource type="PackedScene" uid="uid://bsfmagyy4jqx2" path="res://buildings/assets/metalPlates/metalPlate2x3.tscn" id="3_6e34y"]
+[ext_resource type="PackedScene" uid="uid://dxbp1i5846cfo" path="res://buildings/assets/metalPlates/metalPlate3x2.tscn" id="4_bale4"]
+
+[node name="MetalPlateBuilder" type="Node3D" node_paths=PackedStringArray("parentNode")]
+script = ExtResource("1_d158l")
+parentNode = NodePath("")
+size = Vector2i(3, 2)
+
+[node name="Node3D" parent="." instance=ExtResource("2_pc0vx")]
+visible = false
+
+[node name="Node3D2" parent="." instance=ExtResource("3_6e34y")]
+visible = false
+
+[node name="Node3D3" parent="." instance=ExtResource("4_bale4")]
+visible = false

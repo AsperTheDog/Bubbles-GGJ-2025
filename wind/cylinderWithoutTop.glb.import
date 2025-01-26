@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cnfsdbn6jbuqh"
-path="res://.godot/imported/plates.glb-7cefee2301d09c331d4505af3f35a1dd.scn"
+uid="uid://cfpt44a7kx3l"
+path="res://.godot/imported/cylinderWithoutTop.glb-ab446ec5d1307c717dc49fa09b859f69.scn"
 
 [deps]
 
-source_file="res://buildings/assets/plates.glb"
-dest_files=["res://.godot/imported/plates.glb-7cefee2301d09c331d4505af3f35a1dd.scn"]
+source_file="res://wind/cylinderWithoutTop.glb"
+dest_files=["res://.godot/imported/cylinderWithoutTop.glb-ab446ec5d1307c717dc49fa09b859f69.scn"]
 
 [params]
 
@@ -31,6 +31,18 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
-_subresources={}
+_subresources={
+"meshes": {
+"cylinderWithoutTop_Cylinder": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://wind/wind_mesh.res"
+}
+}
+}
 gltf/naming_version=1
 gltf/embedded_image_handling=1

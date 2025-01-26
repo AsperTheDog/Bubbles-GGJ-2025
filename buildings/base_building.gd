@@ -52,7 +52,7 @@ func makeGhost():
 
 
 func getMeshes():
-	pass
+	return []
 
 
 func removeHitbox():

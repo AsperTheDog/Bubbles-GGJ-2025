@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://dewpn447ita0i"]
+
+[ext_resource type="Shader" uid="uid://bg6m0oqg5mkl3" path="res://shaders/wind.tres" id="1_h1qrv"]
+[ext_resource type="Texture2D" uid="uid://dssbednvvhae5" path="res://wind/WindMap.png" id="2_xb4le"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_h1qrv")
+shader_parameter/Fade = 1.0
+shader_parameter/BaseMap = ExtResource("2_xb4le")
