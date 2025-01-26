@@ -33,6 +33,7 @@ func setOverlayColor(color: Color):
 
 func orient(orientation: Building.Orientation):
 	direction = orientation
+	rotation = Vector3.ZERO
 	while orientation != building.baseOrient:
 		rotate(Vector3.FORWARD, deg_to_rad(90))
 		orientation = (orientation + 1) % 4
