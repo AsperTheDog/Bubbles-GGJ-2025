@@ -11,7 +11,8 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 func _start() -> void:
-	pass
+	get_tree().change_scene_to_file("res://main.tscn")
+
 
 func _quit() -> void:
 	get_tree().quit()
