@@ -115,3 +115,5 @@ func updateAvailable(index: int):
 	if element.amount == 0:
 		entry.get_node("Button").disabled = true
 		selected = -1
+	else:
+		entry.get_node("Button").disabled = false
