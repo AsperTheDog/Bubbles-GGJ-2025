@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://main.gd" id="1_c2rtc"]
 [ext_resource type="Script" path="res://canvas/assets/level/level.gd" id="2_nsr3x"]
 [ext_resource type="PackedScene" uid="uid://c1hjvkwwftrnd" path="res://canvas/canvas.tscn" id="2_qgtxn"]
-[ext_resource type="Resource" uid="uid://dktlcdgjorbp" path="res://canvas/assets/level/collection/level5.tres" id="3_gxl0h"]
+[ext_resource type="Resource" uid="uid://by7ybn3lcdphn" path="res://canvas/assets/level/collection/level5.tres" id="3_gxl0h"]
 [ext_resource type="Resource" uid="uid://boh222lj502u7" path="res://canvas/assets/level/collection/level3.tres" id="3_xgh1o"]
 [ext_resource type="Resource" uid="uid://0xya8qdn7i8x" path="res://canvas/assets/level/collection/level2.tres" id="3_yu2bs"]
 [ext_resource type="Resource" uid="uid://c8fmi83elwi7q" path="res://canvas/assets/level/collection/level0.tres" id="4_j624e"]
