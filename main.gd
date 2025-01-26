@@ -6,7 +6,11 @@ extends Node3D
 @onready var camera: MainCamera = $Camera
 @onready var ui: UI = $UI
 
-var canvasPos: Vector2i = Vector2i.ZERO
+var canvasPos: Vector2i = Vector2i.MAX:
+	set(value):
+		if value == canvasPos: return
+		canvasPos = value
+		canvas.updateGhostPlacement(canvasPos)
 var allowScroll: bool = true
 
 var selecting: int = -1
@@ -15,7 +19,9 @@ var selecting: int = -1
 func _ready():
 	ui.elementSelected.connect(onBuildingSelection)
 	ui.tileSize = canvas.tileSize
-	loadLevel(0)
+	canvas.creationFinished.connect(ui.unlockButtons)
+	canvas.availableUpdated.connect(ui.updateAvailable)
+	loadLevel(3)
 
 
 func _process(delta: float):
@@ -25,7 +31,11 @@ func _process(delta: float):
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
-		canvasPos = camera.getCanvasCoord(event.position, canvas.tileSize)
+		var elems = camera.getCanvasCoord(event.position, canvas.tileSize)
+		canvasPos = elems[0]
+		canvas.lookingObj = elems[1]
+	elif event.is_action("action"):
+		canvas.leftClick(selecting)
 
 
 func getCamera():
@@ -34,6 +44,7 @@ func getCamera():
 
 func loadLevel(index: int):
 	canvas.setLevel(levels[index])
+	ui.reloadLevel()
 	var halfTile = canvas.tileSize / 2
 	camera.canvasMin = -halfTile * Vector2.ONE
 	camera.canvasMax = (levels[index].canvasSize * canvas.tileSize) + camera.canvasMin

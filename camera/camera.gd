@@ -1,6 +1,7 @@
 class_name MainCamera extends Camera3D
 
 @onready var ray: RayCast3D = $mouseRay
+@onready var ray2: RayCast3D = $mouseRay2
 @onready var minZ: float = 0.4
 @onready var maxZ: float = 10.0
 @onready var varZ: float = 0.95
@@ -15,14 +16,18 @@ var canvasMax: Vector2 = Vector2.ONE
 func _process(delta):
 	isDragging = Input.is_action_pressed("drag")
 
-func getCanvasCoord(screenCoord: Vector2, tileSize: float) -> Vector2i:
+func getCanvasCoord(screenCoord: Vector2, tileSize: float):
 	var direction := project_ray_normal(screenCoord)
 	ray.target_position = direction * 100
+	ray2.target_position = ray.target_position
+	var object: BaseBuilding = null
+	if ray2.is_colliding():
+		object = (ray2.get_collider() as Area3D).owner
 	if ray.is_colliding():
 		var ret = ray.get_collision_point()
 		ret /= tileSize
-		return Vector2i(round(ret.x), round(ret.y))
-	return Vector2i.MAX
+		return [Vector2i(round(ret.x), round(ret.y)), object]
+	return [Vector2i.MAX, object]
 
 func _input(event: InputEvent) -> void:
 	var allowScroll = get_tree().current_scene.allowScroll

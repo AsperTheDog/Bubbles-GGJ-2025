@@ -9,3 +9,8 @@ script = ExtResource("1_4bddk")
 [node name="mouseRay" type="RayCast3D" parent="."]
 collide_with_areas = true
 collide_with_bodies = false
+
+[node name="mouseRay2" type="RayCast3D" parent="."]
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
