@@ -21,6 +21,11 @@ var selected: int = -1:
 		elementSelected.emit(selected)
 
 
+func _ready():
+	await get_tree().create_timer(0.2).timeout
+	Fade.fade(false)
+
+
 func reloadLevel():
 	for elem in selector.get_children():
 		if elem == placeholder: continue
