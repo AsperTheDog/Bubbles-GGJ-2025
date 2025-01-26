@@ -84,7 +84,7 @@ func doesBuildingOverlap(building: BuildingPlacement,newBuilding: Building, newP
 
 
 func getBuildingOverlaps(building: Building, newPos: Vector2i):
-	var elems = []
+	var elems: Array[BuildingPlacement] = []
 	for placedBuild: BuildingPlacement in placements:
 		if doesBuildingOverlap(placedBuild, building, newPos):
 			elems.append(placedBuild)
@@ -166,6 +166,8 @@ func disableConstruction():
 	mode = Mode.DESTROYING
 	ghostPlacement.queue_free()
 	ghostPlacement = null
+	for elem: BaseBuilding in buildings.get_children():
+		elem.setOverlayColor(Color.TRANSPARENT)
 
 func enableDemolition():
 	disableConstruction()
@@ -209,16 +211,16 @@ func updateGhostPlacement(pos: Vector2i):
 	else:
 		ghostPlacement.show()
 	ghostPlacement.global_position = getGlobalPos(pos, 0)
-	var overlaps = getBuildingOverlaps(ghostPlacement.building, pos)
+	var overlaps: Array[BuildingPlacement] = getBuildingOverlaps(ghostPlacement.building, pos)
 	canPlaceGhost = overlaps.is_empty()
+	for elem in incorrects:
+		elem.mesh.setOverlayColor(Color.TRANSPARENT)
 	if overlaps.is_empty():
 		ghostPlacement.setOverlayColor(correctColor)
 		canPlaceGhost = true
 	else:
 		ghostPlacement.setOverlayColor(incorrectColor)
 		canPlaceGhost = false
-		for elem in incorrects:
-			elem.mesh.setOverlayColor(Color.TRANSPARENT if not elem.bolted else untouchableColor)
 		for elem: BuildingPlacement in overlaps:
 			elem.mesh.setOverlayColor(incorrectColor)
 		incorrects = overlaps
