@@ -216,8 +216,13 @@ func updateLookingObj(old: BaseBuilding, new: BaseBuilding):
 					old.setOverlayColor(Color.TRANSPARENT if not placement.bolted else untouchableColor)
 
 
+var chosenOrient: Building.Orientation = Building.Orientation.LEFT:
+	set(value):
+		if value == chosenOrient: return
+		chosenOrient = value
+		if ghostPlacement == null: return
+		ghostPlacement.orient(chosenOrient)
 var lastPos: Vector2i = Vector2i.MAX
-var chosenOrient: Building.Orientation = Building.Orientation.LEFT
 var ghostPlacement: BaseBuilding = null
 var canPlaceGhost: bool = false
 var incorrects: Array[BuildingPlacement]
@@ -262,6 +267,14 @@ func leftClick(index: int):
 			if idx == -1: return
 			availableUpdated.emit(idx)
 
+
+func rotateGhost():
+	chosenOrient = (chosenOrient + 3) % 4
+
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("rotate"):
+		rotateGhost()
 #region tilt
 
 #signal tiltingUpdate(tilting: bool)
