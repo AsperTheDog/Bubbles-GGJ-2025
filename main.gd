@@ -34,7 +34,7 @@ func _input(event: InputEvent) -> void:
 		var elems = camera.getCanvasCoord(event.position, canvas.tileSize)
 		canvasPos = elems[0]
 		canvas.lookingObj = elems[1]
-	elif event.is_action("action"):
+	elif event.is_action_pressed("action"):
 		canvas.leftClick(selecting)
 
 
@@ -51,6 +51,7 @@ func loadLevel(index: int):
 
 
 func onBuildingSelection(index: int):
+	selecting = index
 	if index > 0:
 		canvas.enableConstruction(index)
 	elif index == 0:
