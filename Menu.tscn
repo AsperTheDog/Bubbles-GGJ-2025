@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://b4ayhl0igco7v"]
+[gd_scene load_steps=3 format=3 uid="uid://dnydh8icshmi6"]
 
 [ext_resource type="Script" path="res://menu.gd" id="1_fex35"]
 [ext_resource type="Texture2D" uid="uid://djb5i2bsltawo" path="res://title.png" id="2_v5cq1"]
@@ -81,6 +81,15 @@ text = "Begin"
 [node name="Button2" type="Button" parent="Control/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Exit"
+
+[node name="FmodBankLoader" type="FmodBankLoader" parent="."]
+bank_paths = ["res://audio/Desktop/Master.strings.bank", "res://audio/Desktop/Master.bank"]
+
+[node name="FmodEventEmitter3D" type="FmodEventEmitter3D" parent="FmodBankLoader"]
+event_name = "event:/MainMenuMusic"
+event_guid = "{5d21c664-706f-4551-973e-c3ac8cf732f5}"
+autoplay = true
+auto_release = true
 
 [connection signal="pressed" from="Control/MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Control/MarginContainer/VBoxContainer/Button2" to="." method="_on_button_2_pressed"]
