@@ -38,7 +38,7 @@ func addWalls():
 	for y in canvasSize.y:
 		addWall.call(Vector2i(canvasSize.x - 1, y), Building.Orientation.RIGHT)
 	for x in range(canvasSize.x - 1, -1, -1):
-		var distFromGather = x - gathererXOffset
+		var distFromGather = x - gathererXOffset + 1
 		if distFromGather > 0 and distFromGather <= 2: continue
 		addWall.call(Vector2i(x, canvasSize.y - 1), Building.Orientation.TOP)
 	for y in range(canvasSize.y - 1, -1, -1):
