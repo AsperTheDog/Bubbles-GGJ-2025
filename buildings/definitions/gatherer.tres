@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Building" load_steps=5 format=3 uid="uid://b34d0c25rt1fm"]
+
+[ext_resource type="Script" path="res://buildings/slot.gd" id="1_ognpd"]
+[ext_resource type="PackedScene" uid="uid://ctbvvow5mrmq3" path="res://buildings/assets/gatherer.tscn" id="2_2vm3c"]
+[ext_resource type="Script" path="res://buildings/screw.gd" id="3_w4yaa"]
+[ext_resource type="Script" path="res://buildings/building.gd" id="4_15ceu"]
+
+[resource]
+script = ExtResource("4_15ceu")
+name = "Gatherer"
+mesh = ExtResource("2_2vm3c")
+canBePlaced = false
+placeBounds = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0)])
+hitBounds = Array[ExtResource("1_ognpd")]([])
+screws = Array[ExtResource("3_w4yaa")]([])
+baseOrient = 3

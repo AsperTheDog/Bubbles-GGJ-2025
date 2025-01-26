@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://c1hjvkwwftrnd"]
+[gd_scene load_steps=5 format=3 uid="uid://c1hjvkwwftrnd"]
 
 [ext_resource type="Script" path="res://canvas/canvas.gd" id="1_r7nbo"]
 [ext_resource type="PackedScene" uid="uid://bdpew6bsajst7" path="res://canvas/assets/canvas_part.tscn" id="2_wo406"]
+[ext_resource type="PackedScene" uid="uid://5oboifh6dmhf" path="res://canvas/assets/environment.tscn" id="3_qp056"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_s8aem"]
 size = Vector3(3.2, 2.4, 0.01)
@@ -25,3 +26,5 @@ shape = SubResource("BoxShape3D_s8aem")
 [node name="Buildings" type="Node3D" parent="Board"]
 
 [node name="Tiles" type="Node3D" parent="Board"]
+
+[node name="environment" parent="." instance=ExtResource("3_qp056")]
