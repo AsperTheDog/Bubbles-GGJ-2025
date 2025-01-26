@@ -17,3 +17,9 @@ height = 0.1
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.0189885)
 material_override = SubResource("StandardMaterial3D_orjg2")
 mesh = SubResource("CylinderMesh_d6l82")
+
+[node name="FmodEventEmitter3D" type="FmodEventEmitter3D" parent="."]
+event_name = "event:/Interaction/Bolt"
+event_guid = "{611e34b1-c99a-439a-95a9-09e8fd176d20}"
+autoplay = true
+auto_release = true
