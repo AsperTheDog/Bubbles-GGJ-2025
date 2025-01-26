@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Level" load_steps=5 format=3 uid="uid://crtfgx32fxsao"]
+
+[ext_resource type="Script" path="res://canvas/assets/level/level_building.gd" id="1_ca3jq"]
+[ext_resource type="Resource" uid="uid://dlyewu2cbijbl" path="res://buildings/definitions/fan.tres" id="2_wc63c"]
+[ext_resource type="Script" path="res://canvas/assets/level/level.gd" id="3_pw13i"]
+
+[sub_resource type="Resource" id="Resource_dy407"]
+script = ExtResource("1_ca3jq")
+building = ExtResource("2_wc63c")
+placement = Vector2i(6, 8)
+orientation = 3
+
+[resource]
+script = ExtResource("3_pw13i")
+canvasSize = Vector2i(10, 10)
+generatorXOffset = 0
+gathererXOffset = 0
+buildings = Array[ExtResource("1_ca3jq")]([SubResource("Resource_dy407")])
+defaultWall = 0

@@ -1,7 +1,16 @@
-[gd_scene load_steps=15 format=3 uid="uid://b4pey55yg1pxq"]
+[gd_scene load_steps=17 format=3 uid="uid://b4pey55yg1pxq"]
 
 [ext_resource type="Script" path="res://ui/ui.gd" id="1_nwwfa"]
 [ext_resource type="Texture2D" uid="uid://cun1606ue0w8m" path="res://canvas/assets/box.png" id="2_qu7xb"]
+
+[sub_resource type="Gradient" id="Gradient_ajurv"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.695503, 0.695503, 0.695503, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rxhgl"]
+gradient = SubResource("Gradient_ajurv")
+width = 116
+height = 116
 
 [sub_resource type="Gradient" id="Gradient_1wc6q"]
 offsets = PackedFloat32Array(0)
@@ -83,10 +92,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 60
-theme_override_constants/margin_top = 60
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
 theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 60
+theme_override_constants/margin_bottom = 100
 
 [node name="ScrollContainer" type="ScrollContainer" parent="SidePanel/BoxRect/MarginContainer"]
 layout_mode = 2
@@ -102,19 +111,15 @@ theme_override_constants/h_separation = 10
 theme_override_constants/v_separation = 10
 columns = 2
 
-[node name="Placeholder" type="AspectRatioContainer" parent="SidePanel/BoxRect/MarginContainer/ScrollContainer/Selector"]
+[node name="Placeholder" type="TextureRect" parent="SidePanel/BoxRect/MarginContainer/ScrollContainer/Selector"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 size_flags_horizontal = 3
-stretch_mode = 0
-alignment_vertical = 0
+texture = SubResource("GradientTexture2D_rxhgl")
+expand_mode = 5
 
-[node name="ColorRect" type="ColorRect" parent="SidePanel/BoxRect/MarginContainer/ScrollContainer/Selector/Placeholder"]
-layout_mode = 2
-color = Color(0.648488, 0.648488, 0.648488, 1)
-
-[node name="SubViewportContainer" type="SubViewportContainer" parent="SidePanel/BoxRect/MarginContainer/ScrollContainer/Selector/Placeholder/ColorRect"]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="SidePanel/BoxRect/MarginContainer/ScrollContainer/Selector/Placeholder"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -124,27 +129,39 @@ grow_vertical = 2
 size_flags_horizontal = 3
 stretch = true
 
-[node name="SubViewport" type="SubViewport" parent="SidePanel/BoxRect/MarginContainer/ScrollContainer/Selector/Placeholder/ColorRect/SubViewportContainer"]
+[node name="SubViewport" type="SubViewport" parent="SidePanel/BoxRect/MarginContainer/ScrollContainer/Selector/Placeholder/SubViewportContainer"]
 transparent_bg = true
 handle_input_locally = false
-size = Vector2i(136, 136)
+size = Vector2i(2, 2)
 render_target_update_mode = 0
 
-[node name="Camera3D" type="Camera3D" parent="SidePanel/BoxRect/MarginContainer/ScrollContainer/Selector/Placeholder/ColorRect/SubViewportContainer/SubViewport"]
+[node name="Camera3D" type="Camera3D" parent="SidePanel/BoxRect/MarginContainer/ScrollContainer/Selector/Placeholder/SubViewportContainer/SubViewport"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.201981, 0.1, 0.24)
 cull_mask = 2
 
-[node name="Label" type="Label" parent="SidePanel/BoxRect/MarginContainer/ScrollContainer/Selector/Placeholder/ColorRect"]
+[node name="Label" type="Label" parent="SidePanel/BoxRect/MarginContainer/ScrollContainer/Selector/Placeholder"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.043
+anchor_top = 0.638
+anchor_right = 0.948
+anchor_bottom = 1.0
+offset_left = 0.0119996
+offset_top = 7.992
+offset_right = 0.0319901
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 50
+vertical_alignment = 2
+autowrap_mode = 2
+
+[node name="Button" type="TextureButton" parent="SidePanel/BoxRect/MarginContainer/ScrollContainer/Selector/Placeholder"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-autowrap_mode = 2
-
-[node name="Button" type="TextureButton" parent="SidePanel/BoxRect/MarginContainer/ScrollContainer/Selector/Placeholder"]
-layout_mode = 2
 texture_normal = SubResource("GradientTexture1D_8nyq8")
 texture_pressed = SubResource("GradientTexture1D_xkyqx")
 texture_hover = SubResource("GradientTexture1D_dmkj7")

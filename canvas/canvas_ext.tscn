@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://yjcbeuav0tud"]
+
+[ext_resource type="Script" path="res://canvas/canvasExt.gd" id="1_uoubq"]
+
+[node name="CanvasExt" type="Node3D"]
+script = ExtResource("1_uoubq")

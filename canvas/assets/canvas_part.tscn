@@ -1,5 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://bdpew6bsajst7"]
+[gd_scene load_steps=3 format=3 uid="uid://bdpew6bsajst7"]
 
 [ext_resource type="PackedScene" uid="uid://u4054tmwc6df" path="res://canvas/assets/CanvasPart.glb" id="1_bi46r"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y4017"]
+albedo_color = Color(0.964706, 0.94902, 0.94902, 1)
+
 [node name="CanvasPart" instance=ExtResource("1_bi46r")]
+
+[node name="canvas" parent="." index="0"]
+material_override = SubResource("StandardMaterial3D_y4017")

@@ -5,16 +5,18 @@ signal elementSelected(index: int) # 0 is deletion tool
 @export var selectedColor: Color
 @export var unselectedColor: Color
 
-@onready var placeholder: AspectRatioContainer = %Placeholder
+@onready var placeholder: TextureRect = %Placeholder
 @onready var selector: GridContainer = %Selector
 
 var tileSize: float = 1.0
 
 var selected: int = -1:
 	set(value):
-		if selected == value: return
 		setSelected(selected, false)
-		selected = value
+		if selected == value:
+			selected = -1
+		else:
+			selected = value
 		setSelected(selected, true)
 		elementSelected.emit(selected)
 
@@ -22,32 +24,31 @@ var selected: int = -1:
 func _ready():
 	await get_tree().current_scene.ready
 	var count = 1
-	for file in DirAccess.get_files_at("res://buildings/definitions"):
-		var building: Building = load("res://buildings/definitions/" + file)
+	for element: UsableBuilding in get_tree().current_scene.canvas.level.available:
+		if not element.building.canBePlaced: continue
 		var entry := placeholder.duplicate()
-		entry.name = building.name
-		entry.get_node("ColorRect").color = unselectedColor
+		entry.name = element.building.name
 		selector.add_child(entry)
+		entry.texture = entry.texture.duplicate()
+		entry.texture.gradient = entry.texture.gradient.duplicate()
+		entry.get_node("Label").text = str(element.amount)
+		setSelected(selector.get_child_count() - 1, false)
 		entry.get_node("Button").pressed.connect(func(): selected = count)
 		entry.show()
-		if building.mesh != null:
-			var buildingSize := building.getSize()
-			var zoomOut = max(buildingSize.x * 1.5 * tileSize, buildingSize.y * 1.8 * tileSize)
-			var subViewport = entry.get_node("ColorRect/SubViewportContainer/SubViewport")
-			var newMesh: BaseBuilding = building.mesh.instantiate()
-			newMesh.makePreview(count)
-			subViewport.add_child(newMesh)
-			var cam: Camera3D = subViewport.get_node("Camera3D")
-			cam.cull_mask = 0
-			cam.set_cull_mask_value(count + 2, true)
-			cam.position.z = zoomOut
-			cam.position.x = buildingSize.x * 0.45 * tileSize
-			cam.position.y = buildingSize.y * 0.5 * tileSize
-			var halfTile = tileSize / 2
-			cam.look_at(Vector3(((buildingSize.x - 1) * halfTile), ((buildingSize.y - 1) * halfTile), 0.1))
-		else:
-			entry.get_node("ColorRect/SubViewportContainer").queue_free()
-			entry.get_node("ColorRect/Label").text = building.name
+		var buildingSize := element.building.getSize()
+		var zoomOut = max(buildingSize.x * 1.5 * tileSize, buildingSize.y * 1.8 * tileSize)
+		var subViewport = entry.get_node("SubViewportContainer/SubViewport")
+		var newMesh: BaseBuilding = element.building.mesh.instantiate()
+		newMesh.makePreview(count)
+		subViewport.add_child(newMesh)
+		var cam: Camera3D = subViewport.get_node("Camera3D")
+		cam.cull_mask = 0
+		cam.set_cull_mask_value(count + 2, true)
+		cam.position.z = zoomOut
+		cam.position.x = buildingSize.x * 0.45 * tileSize
+		cam.position.y = buildingSize.y * 0.5 * tileSize
+		var halfTile = tileSize / 2
+		cam.look_at(Vector3(((buildingSize.x - 1) * halfTile), ((buildingSize.y - 1) * halfTile), 0.1))
 		count += 1
 
 
@@ -81,9 +82,8 @@ func _input(event: InputEvent) -> void:
 
 func setSelected(index: int, doSelect: bool):
 	if index <= 0: return
-	var child: Control = selector.get_child(index)
-	var rect: ColorRect = child.get_node("ColorRect")
-	rect.color = selectedColor if doSelect else unselectedColor
+	var child: TextureRect = selector.get_child(index)
+	child.texture.gradient.set_color(0, selectedColor if doSelect else unselectedColor)
 
 
 func selectDemoTool():

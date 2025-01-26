@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://cnkao8vd5orjk"]
+
+[ext_resource type="PackedScene" uid="uid://cnfsdbn6jbuqh" path="res://buildings/assets/plates.glb" id="1_f84do"]
+
+[node name="plates" instance=ExtResource("1_f84do")]

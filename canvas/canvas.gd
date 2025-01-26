@@ -1,45 +1,52 @@
 class_name Canvas extends Node3D
 
 @export var canvasElem: PackedScene
-@export var size: Vector2i
-@export var tileSize: float = 0.1
+@export var tileSize: float = 0.2
 
-@export_group("Level")
-@export var levelElements: Level
-
-@onready var board: Node3D = $Board/Tiles
+@onready var tiles: Node3D = $Board/Tiles
 @onready var buildings: Node3D = $Board/Buildings
 @onready var areaShape: CollisionShape3D = $Board/Area/Shape
 
 class BuildingPlacement:
 	var building: Building
 	var position: Vector2i
+	var orientation: Building.Orientation
+	var bolted: bool
 	var hitbox: Area3D
+
+var level: Level
 
 var placements: Array[BuildingPlacement] = []
 
 var screwMesh: PackedScene = preload("res://buildings/assets/screw.glb")
+var tackMesh: PackedScene = preload("res://buildings/assets/wood_tack.tscn")
 
-func _ready():
-	generate()
+var generator: Building = preload("res://buildings/definitions/generator.tres")
 
 func _process(delta):
 	pass
 
 func generate():
-	for child in board.get_children():
+	for child in tiles.get_children():
 		child.queue_free()
-		board.remove_child(child)
-	for x in size.x:
-		for y in size.y:
+		tiles.remove_child(child)
+	for child in buildings.get_children():
+		child.queue_free()
+		buildings.remove_child(child)
+	for x in level.canvasSize.x:
+		for y in level.canvasSize.y:
 			var elem: Node3D = canvasElem.instantiate()
 			elem.position = Vector3(x * tileSize, y * tileSize, 0)
 			elem.name = "Canvas (" + str(x) + ", " + str(y) + ")"
-			board.add_child(elem)
+			tiles.add_child(elem)
 			elem.owner = self
 	var halfTile := tileSize / 2
-	(areaShape.shape as BoxShape3D).size = Vector3(tileSize * size.x, tileSize * size.y, 0.01)
-	(areaShape as CollisionShape3D).position = Vector3(halfTile * size.x, halfTile * size.y, 0) - (halfTile * Vector3(1, 1, 0))
+	(areaShape.shape as BoxShape3D).size = Vector3(tileSize * level.canvasSize.x, tileSize * level.canvasSize.y, 0.01)
+	(areaShape as CollisionShape3D).position = Vector3(halfTile * level.canvasSize.x, halfTile * level.canvasSize.y, 0) - (halfTile * Vector3(1, 1, 0))
+	for building: LevelBuilding in level.buildings:
+		placeBuilding(building.building, building.placement, building.orientation, true)
+		await get_tree().create_timer(0.05).timeout
+	placeBuilding(generator, Vector2i(level.generatorXOffset - 1, -2), Building.Orientation.TOP, true)
 
 
 func getBuildingOverlaps(building: Building, newPos: Vector2i):
@@ -52,18 +59,21 @@ func getBuildingOverlaps(building: Building, newPos: Vector2i):
 	return null
 
 
-func placeBuilding(building: Building, newPos: Vector2i, orientation: BaseBuilding.Orientation):
+func placeBuilding(building: Building, newPos: Vector2i, orientation: Building.Orientation, isBolted: bool):
 	var placement = BuildingPlacement.new()
 	placement.building = building
 	placement.position = newPos
-	var obj: BaseBuilding = placeObjectInCanvas(building, newPos)
+	placement.orientation = orientation
+	placement.bolted = isBolted
+	var obj: BaseBuilding = placeObjectInCanvas(building, newPos, placement.bolted, orientation)
 	obj.orient(orientation)
-	obj.makeGhost()
 	placement.hitbox = obj.get_node("Area3D")
+	placements.append(placement)
 
 
-func placeObjectInCanvas(building: Building, pos: Vector2i):
+func placeObjectInCanvas(building: Building, pos: Vector2i, isBolted: bool, orientation: Building.Orientation):
 	var obj: BaseBuilding = building.mesh.instantiate()
+	obj.building = building
 	obj.dupeMaterials()
 	buildings.add_child(obj)
 	obj.scale = Vector3.ONE * 0.01
@@ -74,12 +84,12 @@ func placeObjectInCanvas(building: Building, pos: Vector2i):
 	tween = create_tween()
 	tween.tween_interval(0.3)
 	for screw: Screw in building.screws:
-		tween.tween_callback(placeScrew.bind(screw, obj, pos))
+		tween.tween_callback(placeScrew.bind(screw, obj, pos, isBolted))
 		tween.tween_interval(0.3)
 	return obj
 
-func placeScrew(screw: Screw, parent: BaseBuilding, buildingPos: Vector2i):
-	var scObj = screwMesh.instantiate()
+func placeScrew(screw: Screw, parent: BaseBuilding, buildingPos: Vector2i, isBolted: bool):
+	var scObj = (screwMesh if isBolted else tackMesh).instantiate()
 	parent.add_child(scObj)
 	scObj.scale = Vector3.ONE * 0.01
 	var offset: Vector2 = Vector2.ZERO
@@ -98,6 +108,20 @@ func placeScrew(screw: Screw, parent: BaseBuilding, buildingPos: Vector2i):
 	var tween = create_tween()
 	tween.tween_property(scObj, "scale", Vector3.ONE, 0.2)
 	tween.tween_property(scObj, "position:z", 0, 0.5)
+
+func setLevel(newLevel: Level):
+	level = newLevel.duplicate(true)
+	level.addWalls()
+	generate()
+
+func enableConstruction(index: int):
+	pass
+
+func disableConstruction():
+	pass
+
+func enableDemolition():
+	disableConstruction()
 
 #region tilt
 

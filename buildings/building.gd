@@ -1,11 +1,19 @@
 class_name Building extends Resource
 
+enum Orientation {
+	LEFT,
+	BOTTOM,
+	RIGHT,
+	TOP
+}
+
 @export var name: String
 @export var mesh: PackedScene
 @export var canBePlaced: bool
 @export var placeBounds: Array[Vector2i]
 @export var hitBounds: Array[Slot]
 @export var screws: Array[Screw]
+@export var baseOrient: Building.Orientation
 
 
 func getSize() -> Vector2i:
