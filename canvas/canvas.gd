@@ -23,7 +23,9 @@ var lookingObj: BaseBuilding = null:
 		if value == lookingObj: return
 		updateLookingObj(lookingObj, value)
 		lookingObj = value
-		if lookingObj == null: return
+		if lookingObj == null: 
+			canDestroy = false
+			return
 		var placement: BuildingPlacement = getPlacement(lookingObj)
 		canDestroy = not placement.bolted if placement != null else false
 
@@ -148,6 +150,24 @@ func getBuildingOverlaps(building: Building, newPos: Vector2i):
 	return elems
 
 
+func removeBuilding():
+	if lookingObj == null: return -1
+	var index = level.getAvailableIndex(lookingObj.building)
+	level.available[index].amount += 1
+	if index == -1: return -1
+	var placement = getPlacement(lookingObj)
+	placements.erase(placement)
+	if placement in incorrects:
+		incorrects.erase(placement)
+	var tween = create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_SINE)
+	tween.tween_property(lookingObj, "scale", Vector3.ZERO, 0.2)
+	var lookingObjRef = lookingObj
+	tween.tween_callback(func(): lookingObjRef.queue_free())
+	lookingObj.removeHitbox()
+	lookingObj = null
+	return index + 1
+
+
 func placeBuilding(building: Building, newPos: Vector2i, orientation: Building.Orientation, isBolted: bool):
 	var placement = BuildingPlacement.new()
 	placement.building = building
@@ -208,8 +228,7 @@ func setLevel(newLevel: Level):
 	generate()
 
 func enableConstruction(index: int):
-	if mode == Mode.BUILDING:
-		disableConstruction()
+	disableConstruction()
 	mode = Mode.BUILDING
 	var building: BaseBuilding = level.available[index - 1].building.mesh.instantiate()
 	building.building = level.available[index - 1].building
@@ -247,14 +266,21 @@ func updateLookingObj(old: BaseBuilding, new: BaseBuilding):
 		Mode.DESTROYING:
 			if new != null:
 				var placement: BuildingPlacement = getPlacement(new)
-				new.setOverlayColor(correctColor if not placement.bolted else incorrectColor)
+				if placement != null:
+					new.setOverlayColor(correctColor if not placement.bolted else incorrectColor)
 			if old != null:
 				var placement: BuildingPlacement = getPlacement(old)
-				old.setOverlayColor(Color.TRANSPARENT if not placement.bolted else untouchableColor)
+				if placement != null:
+					old.setOverlayColor(Color.TRANSPARENT if not placement.bolted else untouchableColor)
 
 
+var chosenOrient: Building.Orientation = Building.Orientation.LEFT:
+	set(value):
+		if value == chosenOrient: return
+		chosenOrient = value
+		if ghostPlacement == null: return
+		ghostPlacement.orient(chosenOrient)
 var lastPos: Vector2i = Vector2i.MAX
-var chosenOrient: Building.Orientation = Building.Orientation.LEFT
 var ghostPlacement: BaseBuilding = null
 var canPlaceGhost: bool = false
 var incorrects: Array[BuildingPlacement]
@@ -288,15 +314,25 @@ func updateGhostPlacement(pos: Vector2i):
 func leftClick(index: int):
 	match mode:
 		Mode.BUILDING:
-			if index <= 0: return
-			if canPlaceGhost:
-				placeBuilding(ghostPlacement.building, lastPos, chosenOrient, false)
-				level.available[index - 1].amount -= 1
-				availableUpdated.emit(index)
-				updateGhostPlacement(lastPos)
+			if index <= 0 or not canPlaceGhost: return
+			placeBuilding(ghostPlacement.building, lastPos, chosenOrient, false)
+			level.available[index - 1].amount -= 1
+			availableUpdated.emit(index)
+			updateGhostPlacement(lastPos)
 		Mode.DESTROYING:
-			pass
+			if lookingObj == null or not canDestroy: return
+			var idx = removeBuilding()
+			if idx == -1: return
+			availableUpdated.emit(idx)
 
+
+func rotateGhost():
+	chosenOrient = (chosenOrient + 3) % 4
+
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("rotate"):
+		rotateGhost()
 #region tilt
 
 #signal tiltingUpdate(tilting: bool)

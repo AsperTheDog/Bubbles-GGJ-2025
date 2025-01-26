@@ -44,3 +44,11 @@ func addWalls():
 	for y in range(canvasSize.y - 1, -1, -1):
 		addWall.call(Vector2i(0, y), Building.Orientation.LEFT)
 		
+
+func getAvailableIndex(query: Building):
+	var count = 0
+	for elem in available:
+		if elem.building == query:
+			return count
+		count += 1
+	return -1

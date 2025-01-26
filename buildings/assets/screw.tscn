@@ -1,5 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://8cqhdf1td3es"]
+[gd_scene load_steps=2 format=3 uid="uid://dycmflq47rro7"]
 
 [ext_resource type="PackedScene" uid="uid://cb2j23toxvban" path="res://buildings/assets/screw.glb" id="1_8uc2g"]
 
 [node name="screw" instance=ExtResource("1_8uc2g")]
+
+[node name="BuildSFX" type="FmodEventEmitter3D" parent="." index="1"]
+event_name = "event:/Interaction/Screw"
+event_guid = "{56cf0325-360d-430e-9520-34d115981c2b}"
+autoplay = true
+auto_release = true

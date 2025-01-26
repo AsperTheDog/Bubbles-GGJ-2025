@@ -1,5 +1,6 @@
 extends BaseBuilding
 
+@onready var loopSFXEmitter: FmodEventEmitter3D = $LoopSFX
 
 # Called when the node enters the scene tree for the first time.
 var fanTween: Tween = null
@@ -15,4 +16,11 @@ func _process(delta: float) -> void:
 
 
 func getMeshes():
-	return [$FanPlate, $FanFan]
+	return [$FanPlate, $FanFan, $Wind]
+
+func playBuildSound():
+	super()
+	loopSFXEmitter.play()
+	
+func _exit_tree() -> void:
+	loopSFXEmitter.stop()

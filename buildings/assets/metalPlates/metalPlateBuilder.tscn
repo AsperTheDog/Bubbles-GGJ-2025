@@ -5,9 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://bsfmagyy4jqx2" path="res://buildings/assets/metalPlates/metalPlate2x3.tscn" id="3_6e34y"]
 [ext_resource type="PackedScene" uid="uid://dxbp1i5846cfo" path="res://buildings/assets/metalPlates/metalPlate3x2.tscn" id="4_bale4"]
 
-[node name="MetalPlateBuilder" type="Node3D" node_paths=PackedStringArray("parentNode")]
+[node name="MetalPlateBuilder" type="Node3D"]
 script = ExtResource("1_d158l")
-parentNode = NodePath("")
 size = Vector2i(3, 2)
 
 [node name="Node3D" parent="." instance=ExtResource("2_pc0vx")]

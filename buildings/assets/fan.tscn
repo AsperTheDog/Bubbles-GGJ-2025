@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dw7fjv3t1lo26"]
+[gd_scene load_steps=6 format=3 uid="uid://dw7fjv3t1lo26"]
 
 [ext_resource type="PackedScene" uid="uid://cdr7jeg1a2pfb" path="res://buildings/assets/fan.glb" id="1_qq77l"]
 [ext_resource type="Script" path="res://buildings/assets/fan.gd" id="1_vrpkn"]
+[ext_resource type="Material" uid="uid://dewpn447ita0i" path="res://wind/wind_mat.tres" id="3_hpjin"]
+[ext_resource type="ArrayMesh" uid="uid://c7twssv13vbkh" path="res://wind/wind_mesh.res" id="4_o46n4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o0otu"]
 size = Vector3(0.167236, 0.174316, 0.25824)
@@ -16,3 +18,18 @@ collision_mask = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00354004, -0.00219727, 0.140289)
 shape = SubResource("BoxShape3D_o0otu")
+
+[node name="BuildSFX" type="FmodEventEmitter3D" parent="." index="4"]
+event_name = "event:/Interaction/Build"
+event_guid = "{9cd3c277-b7ac-4ee7-98bb-19d3134ff023}"
+auto_release = true
+
+[node name="LoopSFX" type="FmodEventEmitter3D" parent="." index="5"]
+event_name = "event:/Buildings/Fan/Loop"
+event_guid = "{38181355-2ee4-465c-99dd-7bc21c2bd6bb}"
+
+[node name="Wind" type="MeshInstance3D" parent="." index="6"]
+transform = Transform3D(-7.39162e-05, 0.248, -0.000161224, -0.1, -0.000183078, 5.85249e-05, -5.84058e-05, -0.000399944, -0.0999999, 0.228817, 0, 0.161401)
+material_override = ExtResource("3_hpjin")
+cast_shadow = 2
+mesh = ExtResource("4_o46n4")

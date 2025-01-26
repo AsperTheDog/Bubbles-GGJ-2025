@@ -7,6 +7,7 @@ var overlayMesh: MeshInstance3D
 
 var overlayMat: StandardMaterial3D = preload("res://buildings/assets/overlay_material.tres")
 
+@onready var buildSFXEmitter: FmodEventEmitter3D = $BuildSFX
 
 func initialize():
 	dupeMaterials()
@@ -58,3 +59,7 @@ func getMeshes():
 func removeHitbox():
 	$Area3D.queue_free()
 	remove_child($Area3D)
+
+func playBuildSound():
+	if(buildSFXEmitter):
+		buildSFXEmitter.play()
