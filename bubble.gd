@@ -14,15 +14,15 @@ func _ready() -> void:
 	await scene.ready
 	canvas = scene.canvas
 	self.position = Vector3(0, 0, canvas.tileSize/8)
-	var tween = create_tween().set_loops()
-	tween.tween_callback(tick_process).set_delay(simulationStepTimeMs/1000.0)
+	var tickLoopTween = create_tween().set_loops()
+	tickLoopTween.tween_callback(tick_process).set_delay(simulationStepTimeMs/1000.0)
 
 
 func tick_process():
 	move_bubble_vertical(1)
 	tickNumber += 1
 	if self.position.y > canvas.level.canvasSize.y * canvas.tileSize:
-		pop(simulationStepTimeMs/2)
+		pop(simulationStepTimeMs/2.0)
 	# query canvas for obstacles + fans & decide on moving dir
 	# if hazard collision wait for animation to pop
 	
@@ -43,7 +43,7 @@ func move_bubble_vertical(dir: int):
 	mesh.position.y = -canvas.tileSize * dir
 	tween.tween_property(mesh, "position:y", 0, simulationStepTimeMs/1000.0) 
 
-		
+
 func move_bubble_horizontal(dir: int):
 	var tween = create_tween()
 	self.position.x += canvas.tileSize * dir
