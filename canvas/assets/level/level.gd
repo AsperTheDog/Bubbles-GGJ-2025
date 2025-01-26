@@ -32,10 +32,14 @@ func addWalls():
 		buildings.append(levelBuilding)
 		
 	for x in canvasSize.x:
+		var distFromGen = x - generatorXOffset + 2
+		if distFromGen > 0 and distFromGen <= 3: continue
 		addWall.call(Vector2i(x, 0), BaseBuilding.Orientation.BOTTOM)
 	for y in canvasSize.y:
 		addWall.call(Vector2i(canvasSize.x - 1, y), BaseBuilding.Orientation.RIGHT)
 	for x in range(canvasSize.x - 1, -1, -1):
+		var distFromGather = x - gathererXOffset
+		if distFromGather > 0 and distFromGather <= 2: continue
 		addWall.call(Vector2i(x, canvasSize.y - 1), BaseBuilding.Orientation.TOP)
 	for y in range(canvasSize.y - 1, -1, -1):
 		addWall.call(Vector2i(0, y), BaseBuilding.Orientation.LEFT)

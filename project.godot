@@ -41,6 +41,10 @@ FmodManager="*res://addons/fmod/FmodManager.gd"
 
 gdscript/warnings/unused_parameter=0
 
+[display]
+
+window/size/mode=2
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/fmod/plugin.cfg")

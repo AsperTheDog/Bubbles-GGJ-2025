@@ -92,10 +92,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 60
-theme_override_constants/margin_top = 60
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
 theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 60
+theme_override_constants/margin_bottom = 100
 
 [node name="ScrollContainer" type="ScrollContainer" parent="SidePanel/BoxRect/MarginContainer"]
 layout_mode = 2
@@ -132,7 +132,7 @@ stretch = true
 [node name="SubViewport" type="SubViewport" parent="SidePanel/BoxRect/MarginContainer/ScrollContainer/Selector/Placeholder/SubViewportContainer"]
 transparent_bg = true
 handle_input_locally = false
-size = Vector2i(2, 2)
+size = Vector2i(116, 116)
 render_target_update_mode = 0
 
 [node name="Camera3D" type="Camera3D" parent="SidePanel/BoxRect/MarginContainer/ScrollContainer/Selector/Placeholder/SubViewportContainer/SubViewport"]
@@ -141,11 +141,17 @@ cull_mask = 2
 
 [node name="Label" type="Label" parent="SidePanel/BoxRect/MarginContainer/ScrollContainer/Selector/Placeholder"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = -1
+anchor_left = 0.043
+anchor_top = 0.638
+anchor_right = 0.948
 anchor_bottom = 1.0
+offset_left = 0.0119996
+offset_top = 7.992
+offset_right = 0.0319901
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 30
 autowrap_mode = 2
 
 [node name="Button" type="TextureButton" parent="SidePanel/BoxRect/MarginContainer/ScrollContainer/Selector/Placeholder"]

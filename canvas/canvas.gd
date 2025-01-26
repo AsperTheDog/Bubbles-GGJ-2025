@@ -21,6 +21,8 @@ var placements: Array[BuildingPlacement] = []
 var screwMesh: PackedScene = preload("res://buildings/assets/screw.glb")
 var tackMesh: PackedScene = preload("res://buildings/assets/wood_tack.tscn")
 
+var generator: Building = preload("res://buildings/definitions/generator.tres")
+
 func _process(delta):
 	pass
 
@@ -44,6 +46,7 @@ func generate():
 	for building: LevelBuilding in level.buildings:
 		placeBuilding(building.building, building.placement, building.orientation, true)
 		await get_tree().create_timer(0.05).timeout
+	placeBuilding(generator, Vector2i(level.generatorXOffset - 1, -2), BaseBuilding.Orientation.TOP, true)
 
 
 func getBuildingOverlaps(building: Building, newPos: Vector2i):
