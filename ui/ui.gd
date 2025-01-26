@@ -1,6 +1,7 @@
 class_name UI extends Control
 
 signal elementSelected(index: int) # 0 is deletion tool
+signal startPressed
 
 @export var selectedColor: Color
 @export var unselectedColor: Color
@@ -100,6 +101,7 @@ func selectDemoTool():
 
 
 func lockButtons():
+	$Start.disabled = true
 	$DeleteElem/MarginContainer/TextureButton.disabled = true
 	for elem in selector.get_children():
 		if elem == placeholder: continue
@@ -107,6 +109,7 @@ func lockButtons():
 
 
 func unlockButtons():
+	$Start.disabled = false
 	$DeleteElem/MarginContainer/TextureButton.disabled = false
 	for elem in selector.get_children():
 		if elem == placeholder: continue
@@ -122,3 +125,30 @@ func updateAvailable(index: int):
 		selected = -1
 	else:
 		entry.get_node("Button").disabled = false
+
+
+func onStartPressed():
+	startPressed.emit()
+
+
+func start():
+	$Start.text = "STOP"
+	lockButtons()
+	$Start.disabled = false
+
+
+func stop():
+	$Start.text = "START"
+	unlockButtons()
+
+
+func winTitle():
+	$ColorRect2.show()
+	var tween: Tween = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE).set_loops(2)
+	$ColorRect2/RichTextLabel.modulate.a = 0.0
+	tween.tween_property($ColorRect2/RichTextLabel, "modulate:a", 1.0, 0.5)
+	tween.tween_property($ColorRect2/RichTextLabel, "modulate:a", 0.0, 0.5)
+	return tween.finished
+
+func resetWin():
+	$ColorRect2.hide()

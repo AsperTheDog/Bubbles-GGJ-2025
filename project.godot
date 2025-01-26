@@ -51,6 +51,10 @@ window/size/mode=2
 
 enabled=PackedStringArray("res://addons/fmod/plugin.cfg")
 
+[gui]
+
+common/bg_color=Color(0.14, 0.14, 0.14, 1)
+
 [input]
 
 drag={
