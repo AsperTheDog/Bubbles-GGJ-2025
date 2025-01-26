@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cs70xc2de27qg"
-path.s3tc="res://.godot/imported/plates_colorpalette.png-d03a7d8c6860208dfc0ec82278042d1d.s3tc.ctex"
+uid="uid://dm3f0psv2ogu7"
+path.s3tc="res://.godot/imported/platesMetal_colorpalette.png-90ef7acee7a5dc4b318d3336ada7db3e.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://buildings/assets/plates_colorpalette.png"
-dest_files=["res://.godot/imported/plates_colorpalette.png-d03a7d8c6860208dfc0ec82278042d1d.s3tc.ctex"]
+source_file="res://buildings/assets/metalPlates/platesMetal_colorpalette.png"
+dest_files=["res://.godot/imported/platesMetal_colorpalette.png-90ef7acee7a5dc4b318d3336ada7db3e.s3tc.ctex"]
 
 [params]
 

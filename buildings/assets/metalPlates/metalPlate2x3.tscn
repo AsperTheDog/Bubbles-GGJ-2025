@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://bsfmagyy4jqx2"]
+
+[ext_resource type="Script" path="res://buildings/base_building.gd" id="1_04mwn"]
+[ext_resource type="PackedScene" uid="uid://bh1dbhoql26o8" path="res://buildings/assets/metalPlates/metalPlateCorner.tscn" id="1_qb71x"]
+[ext_resource type="PackedScene" uid="uid://kkvxmkpinntx" path="res://buildings/assets/metalPlates/metalPlateEdge.tscn" id="2_f3ok4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sf76o"]
+size = Vector3(0.4, 0.6, 0.2)
+
+[node name="Node3D2" type="Node3D"]
+script = ExtResource("1_04mwn")
+
+[node name="MetalPlateCorner" parent="." instance=ExtResource("1_qb71x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.01)
+
+[node name="_Node3D_21924" parent="." instance=ExtResource("2_f3ok4")]
+transform = Transform3D(1.19249e-08, 1, 0, -1, 1.19249e-08, 0, 0, 0, 1, 0, 0.2, 0.01)
+
+[node name="_Node3D_21925" parent="." instance=ExtResource("1_qb71x")]
+transform = Transform3D(1.19249e-08, 1, 0, -1, 1.19249e-08, 0, 0, 0, 1, 0, 0.4, 0.01)
+
+[node name="_Node3D_21926" parent="." instance=ExtResource("1_qb71x")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.2, 0, 0.01)
+
+[node name="_Node3D_21927" parent="." instance=ExtResource("2_f3ok4")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.2, 0.2, 0.01)
+
+[node name="_Node3D_21928" parent="." instance=ExtResource("1_qb71x")]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0.2, 0.4, 0.01)
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0.2, 0)
+collision_layer = 2
+collision_mask = 2
+
+[node name="_CollisionShape3D_21930" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_sf76o")

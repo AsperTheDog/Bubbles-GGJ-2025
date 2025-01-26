@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://kkvxmkpinntx"]
+
+[ext_resource type="PackedScene" uid="uid://c6jipktoep3e5" path="res://buildings/assets/metalPlates/metalPlate.tscn" id="1_jxuk4"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_23g4q"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rw0hm"]
+
+[node name="MetalPlateCorner" type="Node3D"]
+
+[node name="platesMetal" parent="." instance=ExtResource("1_jxuk4")]
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, -0.0578001, 0)
+visible = false
+mesh = SubResource("BoxMesh_23g4q")
+surface_material_override/0 = SubResource("StandardMaterial3D_rw0hm")

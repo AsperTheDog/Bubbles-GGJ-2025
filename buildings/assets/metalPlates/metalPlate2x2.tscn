@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://cqtv6sd56dihg"]
+
+[ext_resource type="PackedScene" uid="uid://bh1dbhoql26o8" path="res://buildings/assets/metalPlates/metalPlateCorner.tscn" id="1_3soco"]
+[ext_resource type="Script" path="res://buildings/base_building.gd" id="1_mtkjn"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_js8fc"]
+size = Vector3(0.4, 0.4, 0.2)
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_mtkjn")
+
+[node name="MetalPlateCorner" parent="." instance=ExtResource("1_3soco")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.01)
+
+[node name="_Node3D_20955" parent="." instance=ExtResource("1_3soco")]
+transform = Transform3D(1.19249e-08, 1, 0, -1, 1.19249e-08, 0, 0, 0, 1, 0, 0.2, 0.01)
+
+[node name="_Node3D_20956" parent="." instance=ExtResource("1_3soco")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.2, 0, 0.01)
+
+[node name="_Node3D_20957" parent="." instance=ExtResource("1_3soco")]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0.2, 0.2, 0.01)
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0.1, 0)
+collision_layer = 2
+collision_mask = 2
+
+[node name="_CollisionShape3D_20959" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_js8fc")

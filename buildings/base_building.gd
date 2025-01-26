@@ -38,4 +38,4 @@ func makeGhost():
 
 
 func getMeshes():
-	pass
+	return []
