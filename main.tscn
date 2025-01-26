@@ -41,3 +41,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.39257, 1.09821, 1.65036)
 [node name="Canvas" parent="." instance=ExtResource("2_qgtxn")]
 
 [node name="UI" parent="." instance=ExtResource("4_jens2")]
+
+[node name="FmodBankLoader" type="FmodBankLoader" parent="."]
+bank_paths = ["res://audio/Desktop/Master.strings.bank", "res://audio/Desktop/Master.bank"]
