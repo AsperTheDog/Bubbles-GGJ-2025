@@ -1,9 +1,15 @@
-[gd_resource type="Resource" script_class="Level" load_steps=15 format=3 uid="uid://0xya8qdn7i8x"]
+[gd_resource type="Resource" script_class="Level" load_steps=17 format=3 uid="uid://0xya8qdn7i8x"]
 
 [ext_resource type="Script" path="res://canvas/assets/level/level_building.gd" id="1_7umwv"]
 [ext_resource type="Script" path="res://canvas/assets/level/usable_building.gd" id="1_bumrh"]
+[ext_resource type="Resource" uid="uid://dlyewu2cbijbl" path="res://buildings/definitions/fan.tres" id="2_ayuuk"]
 [ext_resource type="Resource" uid="uid://dfbcx02o03aw4" path="res://buildings/definitions/spikes.tres" id="2_j2moa"]
 [ext_resource type="Script" path="res://canvas/assets/level/level.gd" id="2_kuma3"]
+
+[sub_resource type="Resource" id="Resource_5ppek"]
+script = ExtResource("1_bumrh")
+amount = 2
+building = ExtResource("2_ayuuk")
 
 [sub_resource type="Resource" id="Resource_jyq1j"]
 script = ExtResource("1_7umwv")
@@ -72,4 +78,4 @@ generatorXOffset = 2
 gathererXOffset = 6
 buildings = Array[ExtResource("1_7umwv")]([SubResource("Resource_jyq1j"), SubResource("Resource_lh8mr"), SubResource("Resource_nxfgr"), SubResource("Resource_sqf45"), SubResource("Resource_wt0yg"), SubResource("Resource_a4qik"), SubResource("Resource_007jp"), SubResource("Resource_68sdb"), SubResource("Resource_vwo0q"), SubResource("Resource_00trj")])
 defaultWall = 2
-available = Array[ExtResource("1_bumrh")]([])
+available = Array[ExtResource("1_bumrh")]([SubResource("Resource_5ppek")])
