@@ -10,7 +10,6 @@ signal availableUpdated(index: int)
 @export var untouchableColor: Color
 @export var correctColor: Color
 @export var incorrectColor: Color
-@export var demolitionColor: Color
 
 @onready var tiles: Node3D = $Board/Tiles
 @onready var buildings: Node3D = $Board/Buildings
@@ -163,8 +162,9 @@ func enableConstruction(index: int):
 	buildings.add_child(building)
 
 func disableConstruction():
-	mode = Mode.DESTROYING
-	ghostPlacement.queue_free()
+	mode = Mode.NONE
+	if ghostPlacement != null:
+		ghostPlacement.queue_free()
 	ghostPlacement = null
 	for elem: BaseBuilding in buildings.get_children():
 		elem.setOverlayColor(Color.TRANSPARENT)
@@ -189,7 +189,7 @@ func updateLookingObj(old: BaseBuilding, new: BaseBuilding):
 		Mode.DESTROYING:
 			if new != null:
 				var placement: BuildingPlacement = getPlacement(new)
-				new.setOverlayColor(demolitionColor if not placement.bolted else incorrectColor)
+				new.setOverlayColor(correctColor if not placement.bolted else incorrectColor)
 			if old != null:
 				var placement: BuildingPlacement = getPlacement(old)
 				old.setOverlayColor(Color.TRANSPARENT if not placement.bolted else untouchableColor)
@@ -235,6 +235,7 @@ func leftClick(index: int):
 				placeBuilding(ghostPlacement.building, lastPos, chosenOrient, false)
 				level.available[index - 1].amount -= 1
 				availableUpdated.emit(index)
+				updateGhostPlacement(lastPos)
 		Mode.DESTROYING:
 			pass
 

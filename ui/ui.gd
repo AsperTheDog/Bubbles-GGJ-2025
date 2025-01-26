@@ -114,3 +114,4 @@ func updateAvailable(index: int):
 	entry.get_node("Label").text = str(element.amount)
 	if element.amount == 0:
 		entry.get_node("Button").disabled = true
+		selected = -1
