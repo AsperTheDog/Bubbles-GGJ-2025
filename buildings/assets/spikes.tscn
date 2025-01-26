@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://ch6hxj8iif5o1"]
+[gd_scene load_steps=4 format=3 uid="uid://defoe5swuiiim"]
 
 [ext_resource type="PackedScene" uid="uid://84qnifhms2qd" path="res://buildings/assets/spikes.glb" id="1_k5d4a"]
 [ext_resource type="Script" path="res://buildings/assets/spikes.gd" id="2_k2ftb"]

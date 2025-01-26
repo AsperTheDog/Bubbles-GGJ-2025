@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://ctbvvow5mrmq3"]
+
+[ext_resource type="PackedScene" uid="uid://bpeeg8kuirqf2" path="res://buildings/assets/gatherer.glb" id="1_38db2"]
+[ext_resource type="Script" path="res://buildings/assets/gatherer.gd" id="2_hwrw0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sfd2m"]
+size = Vector3(0.530701, 0.724915, 0.357674)
+
+[node name="gatherer" instance=ExtResource("1_38db2")]
+script = ExtResource("2_hwrw0")
+
+[node name="Gatherer" parent="." index="0"]
+transform = Transform3D(5.96046e-09, -8.9407e-09, 0.1, -0.1, -5.32907e-16, 5.96046e-09, 0, -0.1, -8.9407e-09, 0, 0, 0)
+
+[node name="Area3D" type="Area3D" parent="." index="1"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.105621, 0.273407, 0.00135468)
+shape = SubResource("BoxShape3D_sfd2m")

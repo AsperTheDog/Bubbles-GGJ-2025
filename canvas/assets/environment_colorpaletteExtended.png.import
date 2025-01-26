@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://xwpamipw4njt"
+path.s3tc="res://.godot/imported/environment_colorpaletteExtended.png-857e233e5fe3f5740806809bf915db36.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "1bbe63ec89274bab33f4634ad07affe3"
+}
+
+[deps]
+
+source_file="res://canvas/assets/environment_colorpaletteExtended.png"
+dest_files=["res://.godot/imported/environment_colorpaletteExtended.png-857e233e5fe3f5740806809bf915db36.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

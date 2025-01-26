@@ -2,6 +2,7 @@ class_name Canvas extends Node3D
 
 signal creationFinished
 signal availableUpdated(index: int)
+signal won
 
 @export var canvasElem: PackedScene
 @export var tileSize: float = 0.2
@@ -14,6 +15,8 @@ signal availableUpdated(index: int)
 @onready var tiles: Node3D = $Board/Tiles
 @onready var buildings: Node3D = $Board/Buildings
 @onready var areaShape: CollisionShape3D = $Board/Area/Shape
+@onready var rotateSFX: FmodEventEmitter3D = $RotateSFX
+@onready var removeSFX: FmodEventEmitter3D = $RemoveSFX
 
 enum Mode {BUILDING, DESTROYING, NONE}
 var mode: Mode = Mode.NONE
@@ -103,6 +106,10 @@ var screwMesh: PackedScene = preload("res://buildings/assets/screw.tscn")
 var tackMesh: PackedScene = preload("res://buildings/assets/wood_tack.tscn")
 
 var generator: Building = preload("res://buildings/definitions/generator.tres")
+var gatherer: Building = preload("res://buildings/definitions/gatherer.tres")
+
+var victoryPos: Vector2i = Vector2i.MAX
+
 
 func _process(delta):
 	pass
@@ -129,6 +136,8 @@ func generate():
 		placeBuilding(building.building, building.placement, building.orientation, true)
 		await get_tree().create_timer(0.02).timeout
 	placeBuilding(generator, Vector2i(level.generatorXOffset - 1, -2), Building.Orientation.TOP, true)
+	placeBuilding(gatherer, Vector2i(level.gathererXOffset, level.canvasSize.y), Building.Orientation.TOP, true)
+	victoryPos = Vector2i(level.gathererXOffset, level.canvasSize.y + 2)
 	await get_tree().create_timer(0.5).timeout
 	creationFinished.emit()
 
@@ -165,6 +174,7 @@ func removeBuilding():
 	tween.tween_callback(func(): lookingObjRef.queue_free())
 	lookingObj.removeHitbox()
 	lookingObj = null
+	removeSFX.play()
 	return index + 1
 
 
@@ -194,6 +204,7 @@ func placeObjectInCanvas(building: Building, pos: Vector2i, isBolted: bool, orie
 	var tween = create_tween()
 	tween.tween_property(obj, "scale", Vector3.ONE, 0.2)
 	tween.tween_property(obj, "position:z", 0, 0.5)
+	tween.connect("finished", obj.playBuildSound)
 	tween = create_tween()
 	tween.tween_interval(0.3)
 	for screw: Screw in building.screws:
@@ -328,11 +339,42 @@ func leftClick(index: int):
 
 func rotateGhost():
 	chosenOrient = (chosenOrient + 3) % 4
+	rotateSFX.play()
 
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("rotate"):
 		rotateGhost()
+		
+
+func start():
+	disableConstruction()
+	var bubbleSpawnPos: Vector2i = Vector2i(level.generatorXOffset, -3)
+	var bubble = preload("res://bubble.tscn").instantiate()
+	bubble.canvas = self
+	bubble.set_position_in_canvas(bubbleSpawnPos)
+	bubble.name = "Bubble"
+	bubble.movedIntoNewPos.connect(bubbleUpdated)
+	add_child(bubble)
+
+
+func stop():
+	var bubble = get_node("Bubble")
+	if bubble != null:
+		bubble.queue_free()
+
+
+func bubbleUpdated(pos: Vector2i):
+	print(pos, victoryPos)
+	if pos == victoryPos:
+		stop()
+		won.emit()
+	var otherpos = pos
+	otherpos.x -= 1
+	if otherpos == victoryPos:
+		stop()
+		won.emit()
+		
 #region tilt
 
 #signal tiltingUpdate(tilting: bool)

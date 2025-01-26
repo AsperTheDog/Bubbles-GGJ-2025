@@ -14,14 +14,16 @@ var canvasPos: Vector2i = Vector2i.MAX:
 var allowScroll: bool = true
 
 var selecting: int = -1
-
+var currentLevel = 0
 
 func _ready():
 	ui.elementSelected.connect(onBuildingSelection)
+	ui.startPressed.connect(start)
 	ui.tileSize = canvas.tileSize
 	canvas.creationFinished.connect(ui.unlockButtons)
 	canvas.availableUpdated.connect(ui.updateAvailable)
-	loadLevel(0)
+	canvas.won.connect(won)
+	loadLevel(currentLevel)
 
 
 func _process(delta: float):
@@ -58,3 +60,25 @@ func onBuildingSelection(index: int):
 		canvas.enableDemolition()
 	else:
 		canvas.disableConstruction()
+
+
+var simulating: bool = false
+func start():
+	if not simulating:
+		canvas.start()
+		ui.start()
+	else:
+		canvas.stop()
+		ui.stop()
+	simulating = not simulating
+		
+
+func won():
+	await ui.winTitle()
+	ui.resetWin()
+	currentLevel += 1
+	loadLevel(currentLevel)
+	canvas.stop()
+	ui.stop()
+	simulating = false
+	

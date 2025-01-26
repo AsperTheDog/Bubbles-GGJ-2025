@@ -3,7 +3,7 @@ class_name MainCamera extends Camera3D
 @onready var ray: RayCast3D = $mouseRay
 @onready var ray2: RayCast3D = $mouseRay2
 @onready var minZ: float = 0.4
-@onready var maxZ: float = 10.0
+@onready var maxZ: float = 2.0
 @onready var varZ: float = 0.95
 
 var lookingCoords: Vector2i
@@ -22,7 +22,9 @@ func getCanvasCoord(screenCoord: Vector2, tileSize: float):
 	ray2.target_position = ray.target_position
 	var object: BaseBuilding = null
 	if ray2.is_colliding():
-		object = (ray2.get_collider() as Area3D).owner
+		var area: Node3D = ray2.get_collider()
+		if area != null:
+			object = area.owner
 	if ray.is_colliding():
 		var ret = ray.get_collision_point()
 		ret /= tileSize

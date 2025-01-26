@@ -16,12 +16,10 @@ signal movedIntoNewPos(canvasPos: Vector2i)
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	scene = get_tree().current_scene
-	await scene.ready
 	canvas = scene.canvas
 	
 	var tickLoopTween = create_tween().set_loops()
 	tickLoopTween.tween_callback(tick_process).set_delay(simulationStepTimeMs/1000.0)
-	set_position_in_canvas(Vector2i(3,0))
 
 func tick_process():
 	tickNumber += 1
