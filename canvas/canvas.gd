@@ -10,7 +10,7 @@ class_name Canvas extends Node3D
 class BuildingPlacement:
 	var building: Building
 	var position: Vector2i
-	var orientation: BaseBuilding.Orientation
+	var orientation: Building.Orientation
 	var bolted: bool
 	var hitbox: Area3D
 
@@ -46,7 +46,7 @@ func generate():
 	for building: LevelBuilding in level.buildings:
 		placeBuilding(building.building, building.placement, building.orientation, true)
 		await get_tree().create_timer(0.05).timeout
-	placeBuilding(generator, Vector2i(level.generatorXOffset - 1, -2), BaseBuilding.Orientation.TOP, true)
+	placeBuilding(generator, Vector2i(level.generatorXOffset - 1, -2), Building.Orientation.TOP, true)
 
 
 func getBuildingOverlaps(building: Building, newPos: Vector2i):
@@ -59,7 +59,7 @@ func getBuildingOverlaps(building: Building, newPos: Vector2i):
 	return null
 
 
-func placeBuilding(building: Building, newPos: Vector2i, orientation: BaseBuilding.Orientation, isBolted: bool):
+func placeBuilding(building: Building, newPos: Vector2i, orientation: Building.Orientation, isBolted: bool):
 	var placement = BuildingPlacement.new()
 	placement.building = building
 	placement.position = newPos
@@ -71,7 +71,7 @@ func placeBuilding(building: Building, newPos: Vector2i, orientation: BaseBuildi
 	placements.append(placement)
 
 
-func placeObjectInCanvas(building: Building, pos: Vector2i, isBolted: bool, orientation: BaseBuilding.Orientation):
+func placeObjectInCanvas(building: Building, pos: Vector2i, isBolted: bool, orientation: Building.Orientation):
 	var obj: BaseBuilding = building.mesh.instantiate()
 	obj.building = building
 	obj.dupeMaterials()
@@ -113,6 +113,15 @@ func setLevel(newLevel: Level):
 	level = newLevel.duplicate(true)
 	level.addWalls()
 	generate()
+
+func enableConstruction(index: int):
+	pass
+
+func disableConstruction():
+	pass
+
+func enableDemolition():
+	disableConstruction()
 
 #region tilt
 

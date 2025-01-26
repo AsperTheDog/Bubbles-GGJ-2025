@@ -9,7 +9,7 @@ size = Vector3(0.192184, 0.0415039, 0.0355835)
 [node name="fence_wall" instance=ExtResource("1_4pggt")]
 script = ExtResource("2_moybq")
 
-[node name="Area3D" type="Area3D" parent="." index="2"]
+[node name="Area3D" type="Area3D" parent="." index="1"]
 collision_layer = 2
 collision_mask = 2
 

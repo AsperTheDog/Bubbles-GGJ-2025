@@ -1,14 +1,15 @@
 class_name BaseBuilding extends Node3D
 
-enum Orientation {
-	LEFT,
-	BOTTOM,
-	RIGHT,
-	TOP
-}
+var overlayMat: StandardMaterial3D = preload("res://buildings/assets/overlay_material.tres")
 
-var direction: BaseBuilding.Orientation
+var direction: Building.Orientation
 var building: Building
+
+
+func initialize():
+	dupeMaterials()
+	for mesh:MeshInstance3D in getMeshes():
+		mesh.material_overlay = overlayMat
 
 
 func dupeMaterials():
@@ -16,7 +17,7 @@ func dupeMaterials():
 		mesh.material_override = mesh.get_active_material(0).duplicate()
 
 
-func orient(orientation: BaseBuilding.Orientation):
+func orient(orientation: Building.Orientation):
 	direction = orientation
 	while orientation != building.baseOrient:
 		rotate(Vector3.FORWARD, deg_to_rad(90))
