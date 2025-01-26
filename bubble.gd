@@ -28,6 +28,21 @@ func tick_process():
 	var moveDir = get_moving_dir()
 
 	# if hazard collision wait for animation to pop
+	var collisionDetected = calculateCollision(moveDir)	
+		
+	if collisionDetected == 0: 
+		if moveDir.x != 0:
+			move_bubble_horizontal(moveDir.x)
+		else:
+			move_bubble_vertical(moveDir.y)			
+		movedIntoNewPos.emit(canvasPos)
+	elif collisionDetected == 1 and moveDir.x != 0:
+		if calculateCollision(Vector2i(0,1)) == 0:
+			move_bubble_vertical(1)
+			movedIntoNewPos.emit(canvasPos)
+		
+
+func calculateCollision(moveDir):
 	var collisionDetected = false
 	
 	for buildingPlacement in canvas.placements:
@@ -38,20 +53,11 @@ func tick_process():
 			else:
 				move_bubble_vertical(moveDir.y)
 			pop(simulationStepTimeMs/3.0)		
-			return
+			return 2
 		elif collisionRes == buildingPlacement.CollisionType.Block:
-			collisionDetected = true
-		
-	if not collisionDetected or moveDir.x != 0:
-		if moveDir.x != 0:
-			if collisionDetected:
-				move_bubble_vertical(moveDir.y)
-			else:
-				move_bubble_horizontal(moveDir.x)
-		else:
-			move_bubble_vertical(moveDir.y)			
-		movedIntoNewPos.emit(canvasPos)
-
+			return 1
+	
+	return 0
 
 
 func set_position_in_canvas(pos: Vector2i):
