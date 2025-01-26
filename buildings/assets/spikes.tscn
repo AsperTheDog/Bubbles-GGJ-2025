@@ -4,13 +4,15 @@
 [ext_resource type="Script" path="res://buildings/assets/spikes.gd" id="2_k2ftb"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lqk3w"]
-size = Vector3(0.192184, 0.0708618, 0.019577)
+size = Vector3(0.192184, 0.0708618, 0.198265)
 
 [node name="spikes" instance=ExtResource("1_k5d4a")]
 script = ExtResource("2_k2ftb")
 
-[node name="Area3D" type="Area3D" parent="." index="2"]
+[node name="Area3D" type="Area3D" parent="." index="1"]
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00145721, 0.100433, 0.019722)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00145721, 0.100433, 0.109066)
 shape = SubResource("BoxShape3D_lqk3w")

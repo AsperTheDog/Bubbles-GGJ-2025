@@ -21,8 +21,11 @@ var selected: int = -1:
 		elementSelected.emit(selected)
 
 
-func _ready():
-	await get_tree().current_scene.ready
+func reloadLevel():
+	for elem in selector.get_children():
+		if elem == placeholder: continue
+		elem.queue_free()
+		selector.remove_child(elem)
 	var count = 1
 	for element: UsableBuilding in get_tree().current_scene.canvas.level.available:
 		if not element.building.canBePlaced: continue
@@ -31,8 +34,8 @@ func _ready():
 		selector.add_child(entry)
 		entry.texture = entry.texture.duplicate()
 		entry.texture.gradient = entry.texture.gradient.duplicate()
-		entry.get_node("Label").text = str(element.amount)
 		setSelected(selector.get_child_count() - 1, false)
+		updateAvailable(count)
 		entry.get_node("Button").pressed.connect(func(): selected = count)
 		entry.show()
 		var buildingSize := element.building.getSize()
@@ -50,6 +53,7 @@ func _ready():
 		var halfTile = tileSize / 2
 		cam.look_at(Vector3(((buildingSize.x - 1) * halfTile), ((buildingSize.y - 1) * halfTile), 0.1))
 		count += 1
+	lockButtons()
 
 
 func onUIEntered() -> void:
@@ -88,3 +92,25 @@ func setSelected(index: int, doSelect: bool):
 
 func selectDemoTool():
 	selected = 0
+
+
+func lockButtons():
+	$DeleteElem/MarginContainer/TextureButton.disabled = true
+	for elem in selector.get_children():
+		if elem == placeholder: continue
+		elem.get_node("Button").disabled = true
+
+
+func unlockButtons():
+	$DeleteElem/MarginContainer/TextureButton.disabled = false
+	for elem in selector.get_children():
+		if elem == placeholder: continue
+		elem.get_node("Button").disabled = false
+
+
+func updateAvailable(index: int):
+	var entry  = selector.get_child(index)
+	var element = get_tree().current_scene.canvas.level.available[index - 1]
+	entry.get_node("Label").text = str(element.amount)
+	if element.amount == 0:
+		entry.get_node("Button").disabled = true

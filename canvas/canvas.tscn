@@ -9,6 +9,10 @@ size = Vector3(3.2, 2.4, 0.01)
 [node name="Canvas" type="Node3D"]
 script = ExtResource("1_r7nbo")
 canvasElem = ExtResource("2_wo406")
+untouchableColor = Color(0, 0, 0, 0.588235)
+correctColor = Color(0.326667, 0.56, 0, 0.392157)
+incorrectColor = Color(0.88, 0, 0.132, 0.392157)
+demolitionColor = Color(0.838497, 0.276845, 1.92523e-07, 0.392157)
 
 [node name="Board" type="Node3D" parent="."]
 
