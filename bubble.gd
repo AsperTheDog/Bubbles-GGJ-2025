@@ -3,6 +3,8 @@ extends Node3D
 var scene
 var canvas: Canvas
 
+signal movedIntoNewPos(canvasPos: Vector2i)
+
 @export var simulationStepTimeMs: int = 350
 @export var tickNumber: int
 
@@ -23,8 +25,6 @@ func _ready() -> void:
 
 func tick_process():
 	tickNumber += 1
-	
-	
 	
 	# query canvas for obstacles + fans & decide on moving dir
 	var moveDir = get_moving_dir()
@@ -48,6 +48,8 @@ func tick_process():
 			move_bubble_vertical(moveDir.y)
 		if shouldPop:
 			pop(simulationStepTimeMs/3.0)	
+		else:
+			movedIntoNewPos.emit(canvasPos)
 
 
 
