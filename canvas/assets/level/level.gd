@@ -11,6 +11,7 @@ enum WallType {
 @export var gathererXOffset: int
 @export var buildings: Array[LevelBuilding]
 @export var defaultWall: Level.WallType
+@export var available: Array[UsableBuilding]
 
 
 func addWalls():

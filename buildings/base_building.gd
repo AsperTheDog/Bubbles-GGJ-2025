@@ -7,6 +7,9 @@ enum Orientation {
 	TOP
 }
 
+var direction: BaseBuilding.Orientation
+var building: Building
+
 
 func dupeMaterials():
 	for mesh: MeshInstance3D in getMeshes():
@@ -14,7 +17,10 @@ func dupeMaterials():
 
 
 func orient(orientation: BaseBuilding.Orientation):
-	pass
+	direction = orientation
+	while orientation != building.baseOrient:
+		rotate(Vector3.FORWARD, deg_to_rad(90))
+		orientation = (orientation + 1) % 4
 
 
 func makePreview(index: int):
@@ -32,11 +38,3 @@ func makeGhost():
 
 func getMeshes():
 	pass
-
-
-static func getRotation(baseOrientation: BaseBuilding.Orientation, newOrientation: BaseBuilding.Orientation):
-	var count = 0
-	while newOrientation != baseOrientation:
-		count += 1
-		newOrientation = (newOrientation + 1) % 4
-	return count
