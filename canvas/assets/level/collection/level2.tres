@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="Level" load_steps=14 format=3 uid="uid://0xya8qdn7i8x"]
+[gd_resource type="Resource" script_class="Level" load_steps=15 format=3 uid="uid://0xya8qdn7i8x"]
 
 [ext_resource type="Script" path="res://canvas/assets/level/level_building.gd" id="1_7umwv"]
+[ext_resource type="Script" path="res://canvas/assets/level/usable_building.gd" id="1_bumrh"]
 [ext_resource type="Resource" uid="uid://dfbcx02o03aw4" path="res://buildings/definitions/spikes.tres" id="2_j2moa"]
 [ext_resource type="Script" path="res://canvas/assets/level/level.gd" id="2_kuma3"]
 
@@ -8,61 +9,61 @@
 script = ExtResource("1_7umwv")
 building = ExtResource("2_j2moa")
 placement = Vector2i(0, 2)
-orientation = 3
+orientation = 1
 
 [sub_resource type="Resource" id="Resource_lh8mr"]
 script = ExtResource("1_7umwv")
 building = ExtResource("2_j2moa")
 placement = Vector2i(1, 2)
-orientation = 3
+orientation = 1
 
 [sub_resource type="Resource" id="Resource_nxfgr"]
 script = ExtResource("1_7umwv")
 building = ExtResource("2_j2moa")
 placement = Vector2i(2, 2)
-orientation = 3
+orientation = 1
 
 [sub_resource type="Resource" id="Resource_sqf45"]
 script = ExtResource("1_7umwv")
 building = ExtResource("2_j2moa")
 placement = Vector2i(3, 2)
-orientation = 3
+orientation = 1
 
 [sub_resource type="Resource" id="Resource_wt0yg"]
 script = ExtResource("1_7umwv")
 building = ExtResource("2_j2moa")
 placement = Vector2i(4, 4)
-orientation = 3
+orientation = 1
 
 [sub_resource type="Resource" id="Resource_a4qik"]
 script = ExtResource("1_7umwv")
 building = ExtResource("2_j2moa")
 placement = Vector2i(5, 4)
-orientation = 3
+orientation = 1
 
 [sub_resource type="Resource" id="Resource_007jp"]
 script = ExtResource("1_7umwv")
 building = ExtResource("2_j2moa")
 placement = Vector2i(6, 4)
-orientation = 3
+orientation = 1
 
 [sub_resource type="Resource" id="Resource_68sdb"]
 script = ExtResource("1_7umwv")
 building = ExtResource("2_j2moa")
 placement = Vector2i(2, 6)
-orientation = 3
+orientation = 1
 
 [sub_resource type="Resource" id="Resource_vwo0q"]
 script = ExtResource("1_7umwv")
 building = ExtResource("2_j2moa")
 placement = Vector2i(3, 6)
-orientation = 3
+orientation = 1
 
 [sub_resource type="Resource" id="Resource_00trj"]
 script = ExtResource("1_7umwv")
 building = ExtResource("2_j2moa")
 placement = Vector2i(4, 6)
-orientation = 3
+orientation = 1
 
 [resource]
 script = ExtResource("2_kuma3")
@@ -71,3 +72,4 @@ generatorXOffset = 2
 gathererXOffset = 6
 buildings = Array[ExtResource("1_7umwv")]([SubResource("Resource_jyq1j"), SubResource("Resource_lh8mr"), SubResource("Resource_nxfgr"), SubResource("Resource_sqf45"), SubResource("Resource_wt0yg"), SubResource("Resource_a4qik"), SubResource("Resource_007jp"), SubResource("Resource_68sdb"), SubResource("Resource_vwo0q"), SubResource("Resource_00trj")])
 defaultWall = 2
+available = Array[ExtResource("1_bumrh")]([])
