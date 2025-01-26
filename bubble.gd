@@ -81,6 +81,8 @@ func get_moving_dir():
 	
 	var leftStrength = 0
 	var rightStrength = 0
+	var topStrength = 0
+	var bottStrength = 0
 	
 	for fan: Canvas.BuildingPlacement in hFans:
 		if fan.position.y == canvasPos.y:
@@ -94,14 +96,34 @@ func get_moving_dir():
 					var strength = 4 - (fan.position.x - canvasPos.x)
 					if rightStrength < strength:
 						rightStrength = strength
-	
+						
+	for fan: Canvas.BuildingPlacement in vFans:
+		if fan.position.x == canvasPos.x:
+			if fan.orientation == Building.Orientation.TOP:
+				if fan.position.y > canvasPos.y and fan.position.y - canvasPos.y <= 3:
+					var strength = 4 - (fan.position.y - canvasPos.y)
+					if topStrength < strength:
+						topStrength = strength
+			elif fan.orientation == Building.Orientation.BOTTOM:
+				if fan.position.y < canvasPos.y and canvasPos.y - fan.position.y  <= 3:
+					var strength = 4 - (canvasPos.y - fan.position.y)
+					if bottStrength < strength:
+						bottStrength = strength
 	 		
-	if leftStrength != rightStrength:
-		if leftStrength > rightStrength:
-			return Vector2i(1, 0)
-		else:
-			return Vector2i(-1, 0)
+	if max(leftStrength, rightStrength) >= max(topStrength, bottStrength) and max(leftStrength, rightStrength) != 0:	
+		if leftStrength != rightStrength:
+			if leftStrength > rightStrength:
+				return Vector2i(1, 0)
+			else:
+				return Vector2i(-1, 0)
+	elif max(leftStrength, rightStrength) < max(topStrength, bottStrength) and max(topStrength, bottStrength) != 0:
+		if topStrength != bottStrength:
+			if topStrength > bottStrength:
+				return Vector2i(0, -1)
+			else:
+				return Vector2i(0, 1)
 		
+	
 	return Vector2i(0,1) 
 
 # Time in seconds
