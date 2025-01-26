@@ -1,0 +1,132 @@
+[gd_resource type="Resource" script_class="Level" load_steps=28 format=3 uid="uid://by7ybn3lcdphn"]
+
+[ext_resource type="Script" path="res://canvas/assets/level/usable_building.gd" id="1_o58ks"]
+[ext_resource type="Script" path="res://canvas/assets/level/level_building.gd" id="2_kxuot"]
+[ext_resource type="Resource" uid="uid://dlyewu2cbijbl" path="res://buildings/definitions/fan.tres" id="2_n63s4"]
+[ext_resource type="Script" path="res://canvas/assets/level/level.gd" id="3_gj7b0"]
+[ext_resource type="Resource" uid="uid://cuvxehreqy36t" path="res://buildings/definitions/metalPlates/metalPlate2x2.tres" id="4_rvv14"]
+[ext_resource type="Resource" uid="uid://wlbovxoonu36" path="res://buildings/definitions/metalPlates/metalPlate3x2.tres" id="5_1da0b"]
+[ext_resource type="Resource" uid="uid://cq1rkrov56yqo" path="res://buildings/definitions/metalPlates/metalPlate2x3.tres" id="6_k00up"]
+[ext_resource type="Resource" uid="uid://dfbcx02o03aw4" path="res://buildings/definitions/spikes.tres" id="7_qw8iq"]
+
+[sub_resource type="Resource" id="Resource_8c71t"]
+script = ExtResource("1_o58ks")
+amount = 5
+building = ExtResource("2_n63s4")
+
+[sub_resource type="Resource" id="Resource_sab88"]
+script = ExtResource("2_kxuot")
+building = ExtResource("4_rvv14")
+placement = Vector2i(0, 1)
+orientation = 0
+
+[sub_resource type="Resource" id="Resource_csrvc"]
+script = ExtResource("2_kxuot")
+building = ExtResource("4_rvv14")
+placement = Vector2i(5, 0)
+orientation = 0
+
+[sub_resource type="Resource" id="Resource_v5xxt"]
+script = ExtResource("2_kxuot")
+building = ExtResource("5_1da0b")
+placement = Vector2i(2, 4)
+orientation = 0
+
+[sub_resource type="Resource" id="Resource_pxhwq"]
+script = ExtResource("2_kxuot")
+building = ExtResource("6_k00up")
+placement = Vector2i(5, 6)
+orientation = 0
+
+[sub_resource type="Resource" id="Resource_5xd1l"]
+script = ExtResource("2_kxuot")
+building = ExtResource("7_qw8iq")
+placement = Vector2i(1, 0)
+orientation = 2
+
+[sub_resource type="Resource" id="Resource_eqbx7"]
+script = ExtResource("2_kxuot")
+building = ExtResource("7_qw8iq")
+placement = Vector2i(1, 1)
+orientation = 2
+
+[sub_resource type="Resource" id="Resource_ecdk3"]
+script = ExtResource("2_kxuot")
+building = ExtResource("7_qw8iq")
+placement = Vector2i(5, 0)
+orientation = 1
+
+[sub_resource type="Resource" id="Resource_e2uvk"]
+script = ExtResource("2_kxuot")
+building = ExtResource("7_qw8iq")
+placement = Vector2i(6, 0)
+orientation = 1
+
+[sub_resource type="Resource" id="Resource_r3wbs"]
+script = ExtResource("2_kxuot")
+building = ExtResource("7_qw8iq")
+placement = Vector2i(5, 2)
+orientation = 1
+
+[sub_resource type="Resource" id="Resource_8bpy1"]
+script = ExtResource("2_kxuot")
+building = ExtResource("7_qw8iq")
+placement = Vector2i(6, 2)
+orientation = 1
+
+[sub_resource type="Resource" id="Resource_4inac"]
+script = ExtResource("2_kxuot")
+building = ExtResource("7_qw8iq")
+placement = Vector2i(5, 4)
+orientation = 1
+
+[sub_resource type="Resource" id="Resource_53a8r"]
+script = ExtResource("2_kxuot")
+building = ExtResource("7_qw8iq")
+placement = Vector2i(2, 5)
+orientation = 3
+
+[sub_resource type="Resource" id="Resource_e3jp7"]
+script = ExtResource("2_kxuot")
+building = ExtResource("7_qw8iq")
+placement = Vector2i(3, 5)
+orientation = 3
+
+[sub_resource type="Resource" id="Resource_s62hx"]
+script = ExtResource("2_kxuot")
+building = ExtResource("7_qw8iq")
+placement = Vector2i(4, 5)
+orientation = 3
+
+[sub_resource type="Resource" id="Resource_u3x57"]
+script = ExtResource("2_kxuot")
+building = ExtResource("2_n63s4")
+placement = Vector2i(2, 2)
+orientation = 0
+
+[sub_resource type="Resource" id="Resource_we6u7"]
+script = ExtResource("2_kxuot")
+building = ExtResource("2_n63s4")
+placement = Vector2i(5, 3)
+orientation = 3
+
+[sub_resource type="Resource" id="Resource_13elb"]
+script = ExtResource("2_kxuot")
+building = ExtResource("2_n63s4")
+placement = Vector2i(1, 7)
+orientation = 3
+
+[sub_resource type="Resource" id="Resource_b3u26"]
+script = ExtResource("2_kxuot")
+building = ExtResource("2_n63s4")
+placement = Vector2i(5, 7)
+orientation = 3
+
+[resource]
+script = ExtResource("3_gj7b0")
+canvasSize = Vector2i(8, 9)
+generatorXOffset = 3
+gathererXOffset = 2
+buildings = Array[ExtResource("2_kxuot")]([SubResource("Resource_sab88"), SubResource("Resource_csrvc"), SubResource("Resource_v5xxt"), SubResource("Resource_pxhwq"), SubResource("Resource_5xd1l"), SubResource("Resource_eqbx7"), SubResource("Resource_ecdk3"), SubResource("Resource_e2uvk"), SubResource("Resource_r3wbs"), SubResource("Resource_8bpy1"), SubResource("Resource_4inac"), SubResource("Resource_53a8r"), SubResource("Resource_e3jp7"), SubResource("Resource_s62hx"), SubResource("Resource_u3x57"), SubResource("Resource_we6u7"), SubResource("Resource_13elb"), SubResource("Resource_b3u26")])
+defaultWall = 0
+available = Array[ExtResource("1_o58ks")]([SubResource("Resource_8c71t")])
