@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cnfsdbn6jbuqh"
-path="res://.godot/imported/plates.glb-7cefee2301d09c331d4505af3f35a1dd.scn"
+uid="uid://cqoao0wuvr1ml"
+path="res://.godot/imported/platesMetal.glb-5048ad74eb59349d201e3f13297d2399.scn"
 
 [deps]
 
-source_file="res://buildings/assets/plates.glb"
-dest_files=["res://.godot/imported/plates.glb-7cefee2301d09c331d4505af3f35a1dd.scn"]
+source_file="res://buildings/assets/metalPlates/platesMetal.glb"
+dest_files=["res://.godot/imported/platesMetal.glb-5048ad74eb59349d201e3f13297d2399.scn"]
 
 [params]
 

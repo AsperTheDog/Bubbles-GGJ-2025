@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://wm615qag1tln"]
+
+[ext_resource type="PackedScene" uid="uid://c6jipktoep3e5" path="res://buildings/assets/metalPlates/metalPlate.tscn" id="1_ai2s7"]
+
+[node name="MetalPlateCorner" type="Node3D"]
+
+[node name="platesMetal" parent="." instance=ExtResource("1_ai2s7")]
