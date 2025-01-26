@@ -25,3 +25,11 @@ shape = SubResource("BoxShape3D_s8aem")
 [node name="Buildings" type="Node3D" parent="Board"]
 
 [node name="Tiles" type="Node3D" parent="Board"]
+
+[node name="RotateSFX" type="FmodEventEmitter3D" parent="."]
+event_name = "event:/Interaction/Rotate"
+event_guid = "{6806c375-e806-4ad0-8e50-09eaf49b4886}"
+
+[node name="RemoveSFX" type="FmodEventEmitter3D" parent="."]
+event_name = "event:/Interaction/Rotate"
+event_guid = "{6806c375-e806-4ad0-8e50-09eaf49b4886}"

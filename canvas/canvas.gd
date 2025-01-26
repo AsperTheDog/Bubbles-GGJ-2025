@@ -14,6 +14,8 @@ signal availableUpdated(index: int)
 @onready var tiles: Node3D = $Board/Tiles
 @onready var buildings: Node3D = $Board/Buildings
 @onready var areaShape: CollisionShape3D = $Board/Area/Shape
+@onready var rotateSFX: FmodEventEmitter3D = $RotateSFX
+@onready var removeSFX: FmodEventEmitter3D = $RemoveSFX
 
 enum Mode {BUILDING, DESTROYING, NONE}
 var mode: Mode = Mode.NONE
@@ -107,6 +109,7 @@ func removeBuilding():
 	tween.tween_callback(func(): lookingObjRef.queue_free())
 	lookingObj.removeHitbox()
 	lookingObj = null
+	removeSFX.play()
 	return index + 1
 
 
@@ -136,6 +139,7 @@ func placeObjectInCanvas(building: Building, pos: Vector2i, isBolted: bool, orie
 	var tween = create_tween()
 	tween.tween_property(obj, "scale", Vector3.ONE, 0.2)
 	tween.tween_property(obj, "position:z", 0, 0.5)
+	tween.connect("finished", obj.playBuildSound)
 	tween = create_tween()
 	tween.tween_interval(0.3)
 	for screw: Screw in building.screws:
@@ -270,6 +274,7 @@ func leftClick(index: int):
 
 func rotateGhost():
 	chosenOrient = (chosenOrient + 3) % 4
+	rotateSFX.play()
 
 
 func _input(event: InputEvent) -> void:
