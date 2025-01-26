@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6q21hi5ug22b"]
+
+[ext_resource type="Material" uid="uid://dewpn447ita0i" path="res://wind/wind_mat.tres" id="1_b63ry"]
+[ext_resource type="ArrayMesh" uid="uid://c7twssv13vbkh" path="res://wind/wind_mesh.res" id="2_50ben"]
+
+[node name="Wind" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.000739145, -2.48251, 0.00161225, 1, 0.00183262, -0.000585239, 0.000584058, 0.00400349, 0.999999, 0, 0, 0)
+material_override = ExtResource("1_b63ry")
+cast_shadow = 2
+mesh = ExtResource("2_50ben")
