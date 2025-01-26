@@ -38,6 +38,64 @@ class BuildingPlacement:
 	var orientation: Building.Orientation
 	var bolted: bool
 	var mesh: BaseBuilding
+	
+	enum CollisionType {None, Block, Pop}
+		
+	
+	func get_collision(bubblePos: Vector2i, dir: Vector2i):
+		
+		for hitSlot in building.hitBounds:			
+			
+			# if running into slot
+			if bubblePos + dir == hitSlot.position + position:
+				if hitSlot.type == Slot.SlotType.FULL:
+					if hitSlot.bursts:
+						return CollisionType.Pop
+					return CollisionType.Block
+				if collision_with_slot(dir):
+					if hitSlot.bursts:
+						return CollisionType.Pop
+					return CollisionType.Block
+			# if running out of slot
+			elif bubblePos == hitSlot.position + position:
+				if collision_from_within(dir):
+					if hitSlot.bursts:
+						return CollisionType.Pop
+					return CollisionType.Block
+						
+		return CollisionType.None
+		
+		
+	func collision_from_within(dir: Vector2i):
+		if dir.x == 1:
+			if orientation == Building.Orientation.RIGHT:
+				return true
+		elif dir.x == -1:
+			if orientation == Building.Orientation.LEFT:
+				return true
+		elif dir.y == 1:
+			if orientation == Building.Orientation.TOP:
+				return true
+		elif dir.y == -1:
+			if orientation == Building.Orientation.BOTTOM:
+				return true		
+		return false
+
+	# dir is the direction the bubble is moving
+	func collision_with_slot(dir: Vector2i):
+		if dir.x == 1:
+			if orientation == Building.Orientation.LEFT:
+				return true
+		elif dir.x == -1:
+			if orientation == Building.Orientation.RIGHT:
+				return true
+		elif dir.y == 1:
+			if orientation == Building.Orientation.BOTTOM:
+				return true
+		elif dir.y == -1:
+			if orientation == Building.Orientation.TOP:
+				return true		
+		return false
 
 var level: Level
 

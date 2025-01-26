@@ -19,19 +19,36 @@ func _ready() -> void:
 	
 	var tickLoopTween = create_tween().set_loops()
 	tickLoopTween.tween_callback(tick_process).set_delay(simulationStepTimeMs/1000.0)
-	set_position_in_canvas(Vector2i(3,0))
+	set_position_in_canvas(Vector2i(1,0))
 
 func tick_process():
-	move_bubble_vertical(1)
 	tickNumber += 1
-	if self.position.y > canvas.level.canvasSize.y * canvas.tileSize:
-		pop(simulationStepTimeMs/2.0)
+	
+	
+	
+	# query canvas for obstacles + fans & decide on moving dir
+	var moveDir = get_moving_dir()
+
+	# if hazard collision wait for animation to pop
+	var collisionDetected = false
+	
+	for buildingPlacement in canvas.placements:
+		var collisionRes = buildingPlacement.get_collision(canvasPos, moveDir)
+		if collisionRes == buildingPlacement.CollisionType.Pop:
+			pop(simulationStepTimeMs/2.0)
+			return
+		elif collisionRes == buildingPlacement.CollisionType.Block:
+			collisionDetected = true
+		
+	if not collisionDetected:
+		if moveDir.x != 0:
+			move_bubble_horizontal(moveDir.x)
+		else:
+			move_bubble_vertical(moveDir.y)
+	
 		
 	
-	
-	canvas.level.buildings
-	# query canvas for obstacles + fans & decide on moving dir
-	# if hazard collision wait for animation to pop
+
 
 func set_position_in_canvas(pos: Vector2i):
 	canvasPos = pos
@@ -39,10 +56,7 @@ func set_position_in_canvas(pos: Vector2i):
 
 # Calculates where bubble should move given a position
 func get_moving_dir():
-	return Vector2i(1,0)
-	
-func calculate_collision_at(pos: Vector2i):
-	pass
+	return Vector2i(0,1)
 
 # Time in seconds
 func pop(timeToPop: float):
