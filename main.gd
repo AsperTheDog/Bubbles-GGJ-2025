@@ -48,6 +48,11 @@ func getCamera():
 
 
 func loadLevel(index: int):
+	if index >= levels.size():
+		await Fade.fade(true)
+		get_tree().change_scene_to_file("res://Menu.tscn")
+		await Fade.fade(false)
+		return
 	canvas.setLevel(levels[index])
 	ui.reloadLevel()
 	var halfTile = canvas.tileSize / 2

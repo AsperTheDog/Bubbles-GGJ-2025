@@ -250,7 +250,9 @@ func enableConstruction(index: int):
 	ghostPlacement = building
 	ghostPlacement.removeHitbox()
 	ghostPlacement.hide()
+	ghostPlacement.orient(chosenOrient)
 	buildings.add_child(building)
+
 
 func disableConstruction():
 	mode = Mode.NONE
