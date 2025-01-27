@@ -138,8 +138,10 @@ func get_moving_dir():
 func pop(timeToPop: float):
 	if tickNumber == -1: # prevent bubble being destroyed when already triggered
 		return
+	self.name = "dyingBubble"
 	await get_tree().create_timer(timeToPop/1000.0).timeout
 	tickNumber = -1 # stops bubble physics
+	
 	playPopSound()
 	$MeshInstance3D.queue_free()
 	await get_tree().create_timer(1).timeout
