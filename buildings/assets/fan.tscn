@@ -29,7 +29,7 @@ event_name = "event:/Buildings/Fan/Loop"
 event_guid = "{38181355-2ee4-465c-99dd-7bc21c2bd6bb}"
 
 [node name="Wind" type="MeshInstance3D" parent="." index="6"]
-transform = Transform3D(-7.39162e-05, 0.248, -0.000161224, -0.1, -0.000183078, 5.85249e-05, -5.84058e-05, -0.000399944, -0.0999999, 0.228817, 0, 0.161401)
+transform = Transform3D(4.37114e-09, 0.4, 0, -0.1, 1.74846e-08, 0, 0, 0, -0.1, 0.4, 0, 0.161)
 material_override = ExtResource("3_hpjin")
 cast_shadow = 2
 mesh = ExtResource("4_o46n4")

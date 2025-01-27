@@ -24,6 +24,8 @@ var canDestroy: bool = false
 var lookingObj: BaseBuilding = null:
 	set(value):
 		if value == lookingObj: return
+		if lookingObj == null:
+			lookingObj = null
 		updateLookingObj(lookingObj, value)
 		lookingObj = value
 		if lookingObj == null: 
@@ -361,9 +363,8 @@ func start():
 
 
 func stop():
-	var bubble = get_node("Bubble")
-	if bubble != null:
-		bubble.queue_free()
+	if has_node("Bubble"):
+		(get_node("Bubble") as Bubble).pop(0)
 
 
 func bubbleUpdated(pos: Vector2i):

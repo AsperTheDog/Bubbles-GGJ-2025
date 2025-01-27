@@ -6,5 +6,8 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_h1qrv")
-shader_parameter/Fade = 1.0
+shader_parameter/Speed1 = 3.111
+shader_parameter/Speed2 = 1.333
+shader_parameter/Speed3 = 0.5
+shader_parameter/Fade = 0.7
 shader_parameter/BaseMap = ExtResource("2_xb4le")

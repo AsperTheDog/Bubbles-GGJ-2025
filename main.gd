@@ -38,6 +38,9 @@ func _input(event: InputEvent) -> void:
 		canvas.lookingObj = elems[1]
 	elif event.is_action_pressed("action"):
 		canvas.leftClick(selecting)
+	elif event.is_action_pressed("skipLevel"):
+		canvas.stop()
+		canvas.won.emit()
 
 
 func getCamera():

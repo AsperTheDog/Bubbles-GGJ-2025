@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://ctbvvow5mrmq3"]
+[gd_scene load_steps=4 format=3 uid="uid://ccb8e3eap2kwo"]
 
 [ext_resource type="PackedScene" uid="uid://bpeeg8kuirqf2" path="res://buildings/assets/gatherer.glb" id="1_38db2"]
 [ext_resource type="Script" path="res://buildings/assets/gatherer.gd" id="2_hwrw0"]
@@ -19,3 +19,8 @@ collision_mask = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.105621, 0.273407, 0.00135468)
 shape = SubResource("BoxShape3D_sfd2m")
+
+[node name="BuildSFX" type="FmodEventEmitter3D" parent="." index="2"]
+event_name = "event:/Interaction/Build"
+event_guid = "{9cd3c277-b7ac-4ee7-98bb-19d3134ff023}"
+auto_release = true

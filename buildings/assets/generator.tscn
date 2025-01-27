@@ -16,3 +16,8 @@ collision_mask = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.196625, -0.0267639, 0.10199)
 shape = SubResource("BoxShape3D_v2n85")
+
+[node name="BuildSFX" type="FmodEventEmitter3D" parent="." index="5"]
+event_name = "event:/Interaction/Build"
+event_guid = "{9cd3c277-b7ac-4ee7-98bb-19d3134ff023}"
+auto_release = true

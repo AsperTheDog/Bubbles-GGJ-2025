@@ -1,4 +1,4 @@
-extends Node3D
+class_name Bubble extends Node3D 
 
 var scene
 var canvas: Canvas
@@ -8,6 +8,7 @@ signal movedIntoNewPos(canvasPos: Vector2i)
 @export var simulationStepTimeMs: int = 350
 @export var tickNumber: int
 
+@onready var bubbleSFXEmitter: FmodEventEmitter3D = $BubbleSFX
 @onready var mesh: MeshInstance3D = $MeshInstance3D
 @export var canvasPos: Vector2i = Vector2(0, 0)
 
@@ -21,7 +22,10 @@ func _ready() -> void:
 	var tickLoopTween = create_tween().set_loops()
 	tickLoopTween.tween_callback(tick_process).set_delay(simulationStepTimeMs/1000.0)
 
+
 func tick_process():
+	if tickNumber == -1:
+		return
 	tickNumber += 1
 	
 	# query canvas for obstacles + fans & decide on moving dir
@@ -82,9 +86,7 @@ func get_moving_dir():
 			
 	if fans.is_empty():
 		return Vector2i(0,1) 
-		
-	var moveDir = Vector2i(0,0)
-	
+			
 	var leftStrength = 0
 	var rightStrength = 0
 	var topStrength = 0
@@ -134,10 +136,14 @@ func get_moving_dir():
 
 # Time in seconds
 func pop(timeToPop: float):
+	if tickNumber == -1: # prevent bubble being destroyed when already triggered
+		return
 	await get_tree().create_timer(timeToPop/1000.0).timeout
-	# Play sound
+	tickNumber = -1 # stops bubble physics
+	playPopSound()
+	$MeshInstance3D.queue_free()
+	await get_tree().create_timer(1).timeout
 	queue_free()
-		
 		
 var tween: Tween = null
 func move_bubble_vertical(dir: int):
@@ -160,3 +166,8 @@ func move_bubble_horizontal(dir: int):
 	self.position.x += canvas.tileSize * dir
 	mesh.position.x = -canvas.tileSize * dir
 	tween.tween_property(mesh, "position:x", 0, 0.35) 
+
+
+func playPopSound():
+	if(bubbleSFXEmitter):
+		bubbleSFXEmitter.play()

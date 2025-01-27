@@ -1,7 +1,7 @@
-[gd_resource type="VisualShader" load_steps=16 format=3 uid="uid://bg6m0oqg5mkl3"]
+[gd_resource type="VisualShader" load_steps=20 format=3 uid="uid://bg6m0oqg5mkl3"]
 
 [sub_resource type="VisualShaderNodeVectorCompose" id="VisualShaderNodeVectorCompose_d3d6x"]
-default_input_values = [0, 1.0, 1, 2.0, 2, 0.0]
+default_input_values = [0, 0.1, 1, 5.0, 2, 0.0]
 op_type = 0
 
 [sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_n2teo"]
@@ -31,6 +31,24 @@ parameter_name = "Fade"
 default_value_enabled = true
 default_value = 0.5
 
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_r4mro"]
+parameter_name = "Speed1"
+default_value_enabled = true
+default_value = 1.0
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_4kjud"]
+parameter_name = "Speed2"
+default_value_enabled = true
+default_value = 2.0
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_t0kb0"]
+parameter_name = "Speed3"
+default_value_enabled = true
+default_value = 0.5
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_yotig"]
+operator = 2
+
 [sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_rtdve"]
 input_name = "uv"
 
@@ -51,6 +69,9 @@ input_name = "time"
 code = "shader_type spatial;
 render_mode blend_mix, depth_draw_opaque, cull_disabled, diffuse_lambert, specular_schlick_ggx;
 
+uniform float Speed1 = 1;
+uniform float Speed2 = 2;
+uniform float Speed3 = 0.5;
 uniform sampler2D BaseMap : source_color, repeat_enable;
 uniform float Fade = 0.5;
 
@@ -61,10 +82,16 @@ void fragment() {
 	vec2 n_out3p0 = UV;
 
 
+// FloatParameter:26
+	float n_out26p0 = Speed1;
+
+
+// FloatParameter:27
+	float n_out27p0 = Speed2;
+
+
 // VectorCompose:13
-	float n_in13p0 = 1.00000;
-	float n_in13p1 = 2.00000;
-	vec2 n_out13p0 = vec2(n_in13p0, n_in13p1);
+	vec2 n_out13p0 = vec2(n_out26p0, n_out27p0);
 
 
 // UVFunc:17
@@ -82,8 +109,16 @@ void fragment() {
 	float n_out9p0 = TIME;
 
 
+// FloatParameter:28
+	float n_out28p0 = Speed3;
+
+
+// FloatOp:29
+	float n_out29p0 = n_out9p0 * n_out28p0;
+
+
 // FloatOp:19
-	float n_out19p0 = n_out18p1 + n_out9p0;
+	float n_out19p0 = n_out18p1 + n_out29p0;
 
 
 // VectorCompose:8
@@ -131,6 +166,7 @@ void fragment() {
 
 }
 "
+graph_offset = Vector2(-1608.1, 608.79)
 modes/cull = 2
 nodes/fragment/0/position = Vector2(820, 560)
 nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_lw00t")
@@ -144,7 +180,7 @@ nodes/fragment/7/position = Vector2(-720, 540)
 nodes/fragment/8/node = SubResource("VisualShaderNodeVectorCompose_bjsfv")
 nodes/fragment/8/position = Vector2(-1000, 1100)
 nodes/fragment/9/node = SubResource("VisualShaderNodeInput_n8n0k")
-nodes/fragment/9/position = Vector2(-1780, 1160)
+nodes/fragment/9/position = Vector2(-1840, 1260)
 nodes/fragment/13/node = SubResource("VisualShaderNodeVectorCompose_d3d6x")
 nodes/fragment/13/position = Vector2(-1920, 560)
 nodes/fragment/17/node = SubResource("VisualShaderNodeUVFunc_n2teo")
@@ -163,4 +199,12 @@ nodes/fragment/24/node = SubResource("VisualShaderNodeFloatOp_x0l35")
 nodes/fragment/24/position = Vector2(380, 480)
 nodes/fragment/25/node = SubResource("VisualShaderNodeFloatParameter_p3xmc")
 nodes/fragment/25/position = Vector2(-1440, -40)
-nodes/fragment/connections = PackedInt32Array(6, 0, 2, 2, 3, 0, 7, 0, 7, 0, 2, 0, 8, 0, 7, 2, 9, 0, 8, 1, 13, 0, 7, 1, 13, 0, 17, 1, 3, 0, 17, 0, 17, 0, 18, 0, 18, 1, 19, 0, 9, 0, 19, 1, 19, 0, 8, 0, 3, 0, 20, 0, 20, 1, 21, 2, 21, 0, 23, 0, 23, 0, 24, 0, 2, 4, 24, 1, 24, 0, 0, 1, 2, 0, 0, 0, 25, 0, 21, 1)
+nodes/fragment/26/node = SubResource("VisualShaderNodeFloatParameter_r4mro")
+nodes/fragment/26/position = Vector2(-2380, 460)
+nodes/fragment/27/node = SubResource("VisualShaderNodeFloatParameter_4kjud")
+nodes/fragment/27/position = Vector2(-2380, 700)
+nodes/fragment/28/node = SubResource("VisualShaderNodeFloatParameter_t0kb0")
+nodes/fragment/28/position = Vector2(-1900, 940)
+nodes/fragment/29/node = SubResource("VisualShaderNodeFloatOp_yotig")
+nodes/fragment/29/position = Vector2(-1500, 1060)
+nodes/fragment/connections = PackedInt32Array(6, 0, 2, 2, 3, 0, 7, 0, 7, 0, 2, 0, 8, 0, 7, 2, 9, 0, 8, 1, 13, 0, 7, 1, 13, 0, 17, 1, 3, 0, 17, 0, 17, 0, 18, 0, 18, 1, 19, 0, 19, 0, 8, 0, 3, 0, 20, 0, 20, 1, 21, 2, 21, 0, 23, 0, 23, 0, 24, 0, 2, 4, 24, 1, 24, 0, 0, 1, 2, 0, 0, 0, 25, 0, 21, 1, 26, 0, 13, 0, 27, 0, 13, 1, 9, 0, 29, 0, 29, 0, 19, 1, 28, 0, 29, 1)

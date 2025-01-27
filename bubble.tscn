@@ -34,3 +34,8 @@ transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
 visible = false
 mesh = SubResource("SphereMesh_gdut1")
 surface_material_override/0 = SubResource("StandardMaterial3D_uvmii")
+
+[node name="BubbleSFX" type="FmodEventEmitter3D" parent="."]
+event_name = "event:/Interaction/Remove"
+event_guid = "{74f183d6-2dab-406d-8a11-e2e0266c7399}"
+auto_release = true
