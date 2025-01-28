@@ -370,7 +370,6 @@ func stop():
 
 
 func bubbleUpdated(pos: Vector2i):
-	print(pos, victoryPos)
 	if pos == victoryPos:
 		stop()
 		won.emit()

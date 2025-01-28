@@ -17,7 +17,3 @@ func _ready() -> void:
 	verTween = create_tween().set_loops().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
 	verTween.tween_property(self, "scale:y", 1.1 * origScale.y, 0.4)
 	verTween.tween_property(self, "scale:y", 0.9 * origScale.y, 0.4)
-
-
-func _process(delta):
-	print(scale)
