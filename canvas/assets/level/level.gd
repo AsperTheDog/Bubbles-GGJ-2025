@@ -16,8 +16,6 @@ enum WallType {
 
 func addWalls():
 	if defaultWall == Level.WallType.NONE: return
-	var xVal := 0
-	var yVal := 0
 	var wall: Building
 	if defaultWall == Level.WallType.NORMAL:
 		wall = preload("res://buildings/definitions/fence.tres")

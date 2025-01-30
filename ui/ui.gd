@@ -70,17 +70,17 @@ func onUIExited() -> void:
 
 
 var closed: bool = false
-var tween: Tween = null
+var drawerTween: Tween = null
 func toggleDrawer():
-	if tween != null:
-		tween.kill()
-	tween = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE).set_parallel()
+	if drawerTween != null:
+		drawerTween.kill()
+	drawerTween = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE).set_parallel()
 	var target = $OpenMarker.position.x if closed else $ClosedMarker.position.x
 	var leftAnchor = $OpenMarker.anchor_left if closed else $ClosedMarker.anchor_left
 	var rightAnchor = 1.0 if closed else $EndMarker.anchor_right
-	tween.tween_property($SidePanel, "position:x", target, 0.5)
-	tween.tween_property($SidePanel, "anchor_left", leftAnchor, 0.5)
-	tween.tween_property($SidePanel, "anchor_right", rightAnchor, 0.5)
+	drawerTween.tween_property($SidePanel, "position:x", target, 0.5)
+	drawerTween.tween_property($SidePanel, "anchor_left", leftAnchor, 0.5)
+	drawerTween.tween_property($SidePanel, "anchor_right", rightAnchor, 0.5)
 	closed = not closed
 
 

@@ -47,8 +47,6 @@ func tick_process():
 		
 
 func calculateCollision(moveDir):
-	var collisionDetected = false
-	
 	for buildingPlacement in canvas.placements:
 		var collisionRes = buildingPlacement.get_collision(canvasPos, moveDir)
 		if collisionRes == buildingPlacement.CollisionType.Pop:			
@@ -56,8 +54,8 @@ func calculateCollision(moveDir):
 				move_bubble_horizontal(moveDir.x)
 			else:
 				move_bubble_vertical(moveDir.y)
+			get_tree().create_timer(simulationStepTimeMs/3000.0).timeout.connect(exploded.emit)
 			pop(simulationStepTimeMs/3.0)
-			exploded.emit()
 			return 2
 		elif collisionRes == buildingPlacement.CollisionType.Block:
 			return 1
