@@ -6,7 +6,7 @@
 [ext_resource type="ArrayMesh" uid="uid://c7twssv13vbkh" path="res://wind/wind_mesh.res" id="4_o46n4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o0otu"]
-size = Vector3(0.167236, 0.174316, 0.25824)
+size = Vector3(0.25116, 0.254272, 0.276581)
 
 [node name="fan" instance=ExtResource("1_qq77l")]
 script = ExtResource("1_vrpkn")
@@ -16,7 +16,7 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00354004, -0.00219727, 0.140289)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00076298, 0.0049439, 0.149459)
 shape = SubResource("BoxShape3D_o0otu")
 
 [node name="BuildSFX" type="FmodEventEmitter3D" parent="." index="4"]

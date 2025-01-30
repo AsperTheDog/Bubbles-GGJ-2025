@@ -361,6 +361,7 @@ func start():
 	bubble.set_position_in_canvas(bubbleSpawnPos)
 	bubble.name = "Bubble"
 	bubble.movedIntoNewPos.connect(bubbleUpdated)
+	bubble.exploded.connect(get_tree().current_scene.start)
 	add_child(bubble)
 
 

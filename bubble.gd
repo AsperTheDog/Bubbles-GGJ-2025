@@ -4,6 +4,7 @@ var scene
 var canvas: Canvas
 
 signal movedIntoNewPos(canvasPos: Vector2i)
+signal exploded
 
 @export var simulationStepTimeMs: int = 350
 @export var tickNumber: int
@@ -11,7 +12,6 @@ signal movedIntoNewPos(canvasPos: Vector2i)
 @onready var bubbleSFXEmitter: FmodEventEmitter3D = $BubbleSFX
 @onready var mesh: MeshInstance3D = $MeshInstance3D
 @export var canvasPos: Vector2i = Vector2(0, 0)
-
 
 
 # Called when the node enters the scene tree for the first time.
@@ -56,7 +56,8 @@ func calculateCollision(moveDir):
 				move_bubble_horizontal(moveDir.x)
 			else:
 				move_bubble_vertical(moveDir.y)
-			pop(simulationStepTimeMs/3.0)		
+			pop(simulationStepTimeMs/3.0)
+			exploded.emit()
 			return 2
 		elif collisionRes == buildingPlacement.CollisionType.Block:
 			return 1
@@ -139,14 +140,16 @@ func pop(timeToPop: float):
 	if tickNumber == -1: # prevent bubble being destroyed when already triggered
 		return
 	self.name = "dyingBubble"
-	await get_tree().create_timer(timeToPop/1000.0).timeout
+	if (timeToPop > 0.0):
+		await get_tree().create_timer(timeToPop/1000.0).timeout
 	tickNumber = -1 # stops bubble physics
 	
 	playPopSound()
+	$CPUParticles3D.restart()
 	$MeshInstance3D.queue_free()
 	await get_tree().create_timer(1).timeout
 	queue_free()
-		
+
 var tween: Tween = null
 func move_bubble_vertical(dir: int):
 	if tween != null:

@@ -36,4 +36,3 @@ event_name = "event:/Interaction/Rotate"
 event_guid = "{6806c375-e806-4ad0-8e50-09eaf49b4886}"
 
 [node name="environment" parent="." instance=ExtResource("3_qp056")]
-

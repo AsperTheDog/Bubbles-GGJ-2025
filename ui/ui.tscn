@@ -139,7 +139,7 @@ stretch = true
 [node name="SubViewport" type="SubViewport" parent="SidePanel/BoxRect/MarginContainer/ScrollContainer/Selector/Placeholder/SubViewportContainer"]
 transparent_bg = true
 handle_input_locally = false
-size = Vector2i(96, 96)
+size = Vector2i(2, 2)
 render_target_update_mode = 0
 
 [node name="Camera3D" type="Camera3D" parent="SidePanel/BoxRect/MarginContainer/ScrollContainer/Selector/Placeholder/SubViewportContainer/SubViewport"]
@@ -198,22 +198,36 @@ offset_left = -0.39209
 offset_right = -0.39209
 
 [node name="DeleteElem" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 180.0
-offset_bottom = 79.0
+layout_mode = 1
+anchor_left = 0.01
+anchor_top = 0.715
+anchor_right = 0.141
+anchor_bottom = 0.796
+offset_left = 0.48
+offset_top = -0.320007
+offset_right = 0.567993
+offset_bottom = 0.191956
 
 [node name="MarginContainer" type="MarginContainer" parent="DeleteElem"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -27.0
+offset_bottom = -26.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 
-[node name="TextureButton" type="TextureButton" parent="DeleteElem/MarginContainer"]
-layout_mode = 2
+[node name="TextureButton" type="TextureButton" parent="DeleteElem"]
+self_modulate = Color(0.491191, 0.491191, 0.491191, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture_normal = SubResource("GradientTexture1D_v4uaj")
 texture_pressed = SubResource("GradientTexture1D_hi6l8")
 texture_hover = SubResource("GradientTexture1D_roeqi")
@@ -221,15 +235,15 @@ texture_disabled = SubResource("GradientTexture1D_67gv8")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Label" type="Label" parent="DeleteElem/MarginContainer/TextureButton"]
+[node name="Label" type="Label" parent="DeleteElem/TextureButton"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 30
-text = "Destroy"
+text = "DESTROY MODE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -262,14 +276,14 @@ stretch_mode = 4
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.01
-anchor_top = 0.812
-anchor_right = 0.115
+anchor_top = 0.821
+anchor_right = 0.142
 anchor_bottom = 0.903
 offset_left = 0.48
-offset_top = -0.176025
-offset_right = -0.479996
-offset_bottom = -0.144043
-text = "START!"
+offset_top = -0.00799561
+offset_right = 0.416
+offset_bottom = -0.143982
+text = "SIMULATE"
 
 [node name="ColorRect2" type="ColorRect" parent="."]
 visible = false
@@ -296,5 +310,5 @@ justification_flags = 35
 
 [connection signal="mouse_entered" from="SidePanel/BoxRect/MarginContainer/ScrollContainer" to="." method="onUIEntered"]
 [connection signal="mouse_exited" from="SidePanel/BoxRect/MarginContainer/ScrollContainer" to="." method="onUIExited"]
-[connection signal="pressed" from="DeleteElem/MarginContainer/TextureButton" to="." method="selectDemoTool"]
+[connection signal="pressed" from="DeleteElem/TextureButton" to="." method="selectDemoTool"]
 [connection signal="pressed" from="Start" to="." method="onStartPressed"]

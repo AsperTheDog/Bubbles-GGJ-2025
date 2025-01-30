@@ -101,7 +101,7 @@ func selectDemoTool():
 
 func lockButtons():
 	$Start.disabled = true
-	$DeleteElem/MarginContainer/TextureButton.disabled = true
+	$DeleteElem/TextureButton.disabled = true
 	for elem in selector.get_children():
 		if elem == placeholder: continue
 		elem.get_node("Button").disabled = true
@@ -109,7 +109,7 @@ func lockButtons():
 
 func unlockButtons():
 	$Start.disabled = false
-	$DeleteElem/MarginContainer/TextureButton.disabled = false
+	$DeleteElem/TextureButton.disabled = false
 	for elem in selector.get_children():
 		if elem == placeholder: continue
 		elem.get_node("Button").disabled = false

@@ -19,7 +19,6 @@ func getMeshes():
 	return [$FanPlate, $FanFan, $Wind]
 
 func playBuildSound():
-	super()
 	loopSFXEmitter.play()
 	
 func _exit_tree() -> void:
